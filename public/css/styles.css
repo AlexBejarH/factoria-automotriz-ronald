@@ -183,13 +183,21 @@ nav::before {
     display: flex;
   }
   
-  /* Animación de entrada de las letras (inmediatamente) */
+  /* Animación de entrada de las letras (se acomodan secuencialmente) */
   .nav-links.open li {
     opacity: 0;
     width: 100%;
     animation: slideInMenu 0.3s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
   }
-  /* Eliminados los animation-delay para que todo ocurra al instante de abrir */
+  .nav-links.open li:nth-child(1) { animation-delay: 0.05s; }
+  .nav-links.open li:nth-child(2) { animation-delay: 0.1s; }
+  .nav-links.open li:nth-child(3) { animation-delay: 0.15s; }
+  .nav-links.open li:nth-child(4) { animation-delay: 0.2s; }
+  .nav-links.open li:nth-child(5) { animation-delay: 0.25s; }
+  .nav-links.open li:nth-child(6) { animation-delay: 0.3s; }
+  .nav-links.open li:nth-child(7) { animation-delay: 0.35s; }
+  .nav-links.open li:nth-child(8) { animation-delay: 0.4s; }
+  .nav-links.open li:nth-child(9) { animation-delay: 0.45s; }
 
   @keyframes slideInMenu {
     0% { opacity: 0; transform: translateX(20px); }
@@ -198,16 +206,17 @@ nav::before {
 
   .nav-links.aws-mono a {
     display: inline-block;
-    width: max-content;
+    width: 100%;
+    max-width: 140px;
     box-sizing: border-box;
-    padding: 8px 16px;
-    font-size: 15px;
+    padding: 6px 12px;
+    font-size: 14px;
     /* Cajita verde por cada opción */
     background: rgba(0, 100, 50, 0.85);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(0, 230, 118, 0.4);
-    border-radius: 8px;
+    border-radius: 6px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3), inset 0 0 15px rgba(0, 230, 118, 0.15);
     /* Color principal que estamos usando */
     color: var(--aws-orange) !important; 
@@ -218,8 +227,10 @@ nav::before {
   }
   
   .nav-links.open li {
-    display: flex;
-    justify-content: center;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
   }
   
   /* Efecto luz roja con intensidad al hacer scroll o pasar el mouse */
@@ -570,14 +581,14 @@ footer{background:var(--charcoal);border-top:1px solid rgba(255,255,255,.06);pad
   box-shadow: 0 0 20px rgba(255, 153, 0, 0.3), 0 10px 30px rgba(0,0,0,0.5);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-.service-card:hover, .producto-card:hover, .oferta-card:hover, .image-wrapper:hover, .mant-visual:hover, .testimonio-card:hover, .detalle-producto:hover, .nav-cta:hover, .slide-btn:hover, .add-btn:hover, .detalle-consulta:hover, .oferta-cta:hover, .form-submit:hover {
+.service-card:hover, .producto-card:hover, .oferta-card:hover, .image-wrapper:hover, .mant-visual:hover, .testimonio-card:hover, .detalle-producto:hover, .nav-cta:hover, .slide-btn:hover, .add-btn:hover, .detalle-consulta:hover, .oferta-cta:hover, .form-submit:hover, .filosofia-card:hover {
   transform: translateY(-8px);
   border-color: rgba(255,50,30,1);
   box-shadow: 0 0 25px rgba(255,50,30,0.6), 0 15px 40px rgba(255,50,30,0.4);
 }
 
 /* active-hover no usa translateY para evitar temblor (jitter) de pantalla en móviles al scrollear */
-.service-card.active-hover, .producto-card.active-hover, .oferta-card.active-hover, .image-wrapper.active-hover, .mant-visual.active-hover, .testimonio-card.active-hover, .detalle-producto.active-hover, .nav-cta.active-hover, .slide-btn.active-hover, .add-btn.active-hover, .detalle-consulta.active-hover, .oferta-cta.active-hover, .form-submit.active-hover {
+.service-card.active-hover, .producto-card.active-hover, .oferta-card.active-hover, .image-wrapper.active-hover, .mant-visual.active-hover, .testimonio-card.active-hover, .detalle-producto.active-hover, .nav-cta.active-hover, .slide-btn.active-hover, .add-btn.active-hover, .detalle-consulta.active-hover, .oferta-cta.active-hover, .form-submit.active-hover, .filosofia-card.active-hover {
   border-color: rgba(255,50,30,1) !important;
   box-shadow: 0 0 25px rgba(255,50,30,0.8), 0 15px 40px rgba(255,50,30,0.6) !important;
   transition: all 0.3s ease;
