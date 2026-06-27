@@ -575,16 +575,23 @@ function startHeroScroll() {
   if (!heroContainer) return;
   heroScrollInterval = setInterval(() => {
     if (!isHeroPaused) {
-      heroContainer.scrollLeft += 1;
+      heroContainer.scrollLeft += 2; // Un poco más rápido para asegurar que se note
       // Bucle infinito: si llegamos a la mitad de todo el ancho (porque están duplicados)
       if (heroContainer.scrollLeft >= heroContainer.scrollWidth / 2) {
         heroContainer.scrollLeft = 0;
       }
     }
-  }, 20); // Fluidez (velocidad 50px por seg)
+  }, 20); // Fluidez (velocidad 100px por seg)
 }
 
 if (heroContainer) {
+  // Clonar slides dinámicamente para el bucle
+  const originalSlides = Array.from(heroContainer.children);
+  originalSlides.forEach(slide => {
+    const clone = slide.cloneNode(true);
+    heroContainer.appendChild(clone);
+  });
+
   startHeroScroll();
   
   // Detener la cinta si el usuario interactúa
