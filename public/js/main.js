@@ -446,14 +446,21 @@ function toggleMenu() {
 
 // Cerrar menú al hacer click en un link del nav
 document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    const navLinks = document.querySelector('.nav-links');
-    const nav = document.querySelector('nav');
-    const hamburger = document.querySelector('.hamburger');
-    if (navLinks.classList.contains('open')) {
-      navLinks.classList.remove('open');
-      nav.classList.remove('menu-open');
-      hamburger.querySelectorAll('span').forEach(s => s.style.cssText = '');
+  link.addEventListener('click', function(e) {
+    const isMobile = window.innerWidth <= 900;
+    if (isMobile) {
+      this.classList.add('clicked');
+      setTimeout(() => {
+        this.classList.remove('clicked');
+        const navLinks = document.querySelector('.nav-links');
+        const nav = document.querySelector('nav');
+        const hamburger = document.querySelector('.hamburger');
+        if (navLinks.classList.contains('open')) {
+          navLinks.classList.remove('open');
+          nav.classList.remove('menu-open');
+          hamburger.querySelectorAll('span').forEach(s => s.style.cssText = '');
+        }
+      }, 300);
     }
   });
 });
@@ -467,4 +474,29 @@ document.addEventListener('click', (e) => {
     nav.classList.remove('menu-open');
     document.querySelector('.hamburger').querySelectorAll('span').forEach(s => s.style.cssText = '');
   }
+});
+
+// ====== SCROLLSPY (Luz roja en menú al hacer scroll) ======
+const sections = document.querySelectorAll('section[id], div[id="ofertas"], div[id="productos"], div[id="testimonios"]');
+const navItems = document.querySelectorAll('.nav-links a[href^="#"]');
+
+const observerOptions = {
+  root: null,
+  rootMargin: '-20% 0px -70% 0px',
+  threshold: 0
+};
+
+const scrollSpyObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      navItems.forEach(item => item.classList.remove('active-scroll'));
+      const activeLink = document.querySelector('.nav-links a[href="#' + id + '"]');
+      if (activeLink) activeLink.classList.add('active-scroll');
+    }
+  });
+}, observerOptions);
+
+sections.forEach(sec => {
+  if (sec) scrollSpyObserver.observe(sec);
 });
