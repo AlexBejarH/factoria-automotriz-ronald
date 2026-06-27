@@ -153,8 +153,48 @@ nav::before {
   border-radius: 2px;
 }
 @media (max-width: 900px) {
-  .nav-links { display: none; }
+  /* Ocultar links y CTA en móvil */
+  .nav-links,
+  .nav-links.aws-mono {
+    display: none;
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 0;
+    right: 0;
+    background: rgba(14, 14, 14, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px;
+    z-index: 999;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .nav-links.open,
+  .nav-links.aws-mono.open {
+    display: flex;
+  }
+  .nav-links.aws-mono a {
+    padding: 12px 16px;
+    font-size: 15px;
+    border-radius: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-links.aws-mono li:last-child a {
+    border-bottom: none;
+  }
+  /* Ocultar botones del nav en móvil */
+  nav .nav-inner > div {
+    display: none;
+  }
+  /* Mostrar hamburger */
   .hamburger { display: flex; }
+  /* Nav no tiene border-radius cuando el menú está abierto */
+  nav.menu-open {
+    border-radius: 20px;
+  }
 }
 
 /* BRAND MARQUEE */

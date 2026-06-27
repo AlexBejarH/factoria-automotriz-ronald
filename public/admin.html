@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <script>
   if (window.location.protocol === 'file:') {
-    window.location.href = 'http://localhost:3000/' + 'admin.html';
+    window.location.href = '/admin.html';
   }
 </script>
 
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Factoría — Panel de Administración</title>
+<title>FactorÃ­a â€” Panel de AdministraciÃ³n</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
@@ -63,65 +63,65 @@ td{font-size:14px;}
     <!-- Pantalla de Login -->
   <div id="login-screen">
     <div class="login-box" id="login-box-inner">
-      <h1 style="margin-bottom:20px;">Factoría <em>Admin</em></h1>
+      <h1 style="margin-bottom:20px;">FactorÃ­a <em>Admin</em></h1>
       <div id="login-error" class="error-msg">Credenciales incorrectas</div>
-      <input type="email" id="email" placeholder="Correo Electrónico" />
-      <input type="password" id="password" placeholder="Contraseña" />
+      <input type="email" id="email" placeholder="Correo ElectrÃ³nico" />
+      <input type="password" id="password" placeholder="ContraseÃ±a" />
       <button class="btn-primary" style="width:100%;" onclick="hacerLogin()">Entrar</button>
       <div style="margin-top:15px; text-align:center;">
-        <a href="#" style="color:var(--silver); font-size:13px; text-decoration:none;" onclick="mostrarRecuperacion()">¿Olvidaste tu contraseña?</a>
+        <a href="#" style="color:var(--silver); font-size:13px; text-decoration:none;" onclick="mostrarRecuperacion()">Â¿Olvidaste tu contraseÃ±a?</a>
       </div>
     </div>
     
     <div class="login-box" id="recovery-box" style="display:none;">
-      <h2 style="margin-bottom:10px;">Recuperar Contraseña</h2>
-      <p style="color:var(--silver); font-size:14px; margin-bottom:20px;">Ingresa tu correo para recibir un enlace de recuperación.</p>
+      <h2 style="margin-bottom:10px;">Recuperar ContraseÃ±a</h2>
+      <p style="color:var(--silver); font-size:14px; margin-bottom:20px;">Ingresa tu correo para recibir un enlace de recuperaciÃ³n.</p>
       <div id="recovery-msg" style="font-size:13px; margin-bottom:16px; display:none;"></div>
-      <input type="email" id="recovery-email" placeholder="Correo Electrónico" />
+      <input type="email" id="recovery-email" placeholder="Correo ElectrÃ³nico" />
       <button class="btn-primary" style="width:100%; margin-bottom:10px;" onclick="solicitarRecuperacion()">Enviar enlace</button>
-      <a href="#" style="color:var(--silver); font-size:13px; text-decoration:none;" onclick="mostrarLogin()">Volver al inicio de sesión</a>
+      <a href="#" style="color:var(--silver); font-size:13px; text-decoration:none;" onclick="mostrarLogin()">Volver al inicio de sesiÃ³n</a>
     </div>
 
     <div class="login-box" id="reset-box" style="display:none;">
-      <h2 style="margin-bottom:10px;">Nueva Contraseña</h2>
-      <p style="color:var(--silver); font-size:14px; margin-bottom:20px;">Ingresa tu nueva contraseña maestra.</p>
+      <h2 style="margin-bottom:10px;">Nueva ContraseÃ±a</h2>
+      <p style="color:var(--silver); font-size:14px; margin-bottom:20px;">Ingresa tu nueva contraseÃ±a maestra.</p>
       <div id="reset-msg" style="font-size:13px; margin-bottom:16px; display:none;"></div>
-      <input type="password" id="reset-pass" placeholder="Nueva Contraseña" />
-      <button class="btn-primary" style="width:100%; margin-bottom:10px;" onclick="resetearPassword()">Guardar Contraseña</button>
-      <a href="http://localhost:3000/admin.html" style="color:var(--silver); font-size:13px; text-decoration:none;">Volver al inicio de sesión</a>
+      <input type="password" id="reset-pass" placeholder="Nueva ContraseÃ±a" />
+      <button class="btn-primary" style="width:100%; margin-bottom:10px;" onclick="resetearPassword()">Guardar ContraseÃ±a</button>
+      <a href="/admin.html" style="color:var(--silver); font-size:13px; text-decoration:none;">Volver al inicio de sesiÃ³n</a>
     </div>
   </div>
 
   <div class="container" style="display:none;" id="main-content">
     <div class="header">
       <div>
-        <h1>Panel de <em>Administración</em></h1>
-        <p>Gestiona clientes, ofertas y tu catálogo de servicios.</p>
+        <h1>Panel de <em>AdministraciÃ³n</em></h1>
+        <p>Gestiona clientes, ofertas y tu catÃ¡logo de servicios.</p>
       </div>
       <div>
-        <a href="/factoria.html" class="btn-volver" style="margin-right:10px;">← Ver sitio web</a>
-        <button class="btn-volver" onclick="cerrarSesion()">Cerrar sesión</button>
+        <a href="/factoria.html" class="btn-volver" style="margin-right:10px;">â† Ver sitio web</a>
+        <button class="btn-volver" onclick="cerrarSesion()">Cerrar sesiÃ³n</button>
       </div>
     </div>
     
     <div class="tabs">
-      <button class="tab active" onclick="switchTab('clientes')">Gestión de Clientes</button>
-      <button class="tab" onclick="switchTab('ofertas')">Gestión de Ofertas</button>
+      <button class="tab active" onclick="switchTab('clientes')">GestiÃ³n de Clientes</button>
+      <button class="tab" onclick="switchTab('ofertas')">GestiÃ³n de Ofertas</button>
       
-      <button class="tab" onclick="switchTab('catalogo')">Catálogo Excel</button>
+      <button class="tab" onclick="switchTab('catalogo')">CatÃ¡logo Excel</button>
       <button class="tab" id="tab-btn-equipo" onclick="switchTab('equipo')" style="display:none; color:var(--aws-orange);">Equipo (SuperAdmin)</button>
 
     </div>
 
-    <!-- Pestaña Clientes -->
+    <!-- PestaÃ±a Clientes -->
     <div id="tab-clientes" class="tab-content active">
       <table>
         <thead>
           <tr>
             <th>ID</th>
             <th>Nombre Completo</th>
-            <th>Teléfono</th>
-            <th>Vehículo</th>
+            <th>TelÃ©fono</th>
+            <th>VehÃ­culo</th>
             <th>Servicio</th>
             <th>Mensaje</th>
             <th>Fecha</th>
@@ -133,22 +133,22 @@ td{font-size:14px;}
       </table>
     </div>
 
-    <!-- Pestaña Ofertas -->
+    <!-- PestaÃ±a Ofertas -->
     <div id="tab-ofertas" class="tab-content">
       <div class="control-panel">
         <div class="offer-form" id="form-oferta">
-          <h3>Añadir nueva oferta</h3>
+          <h3>AÃ±adir nueva oferta</h3>
           <input type="hidden" id="o-id">
           <div>
-            <label>Título de la oferta</label>
+            <label>TÃ­tulo de la oferta</label>
             <input type="text" id="o-titulo" placeholder="Ej: Cambio de Aceite">
           </div>
           <div>
             <label>Insignia / Badge (Opcional)</label>
-            <input type="text" id="o-badge" placeholder="Ej: 🔥 Más vendido">
+            <input type="text" id="o-badge" placeholder="Ej: ðŸ”¥ MÃ¡s vendido">
           </div>
           <div class="full">
-            <label>Descripción corta</label>
+            <label>DescripciÃ³n corta</label>
             <textarea id="o-desc" rows="2" placeholder="Detalles de la oferta..."></textarea>
           </div>
           <div>
@@ -161,7 +161,7 @@ td{font-size:14px;}
           </div>
           <div>
             <label>Imagen (Emoji o URL)</label>
-            <input type="text" id="o-img" placeholder="Ej: 💧 o https://...">
+            <input type="text" id="o-img" placeholder="Ej: ðŸ’§ o https://...">
           </div>
           <div class="full" style="display:flex;align-items:flex-end;margin-top:10px;">
             <button class="btn-primary" onclick="guardarOferta(event)">Guardar Oferta</button>
@@ -175,7 +175,7 @@ td{font-size:14px;}
           <tr>
             <th>ID</th>
             <th>Imagen</th>
-            <th>Título & Descripción</th>
+            <th>TÃ­tulo & DescripciÃ³n</th>
             <th>Precios</th>
             <th>Acciones</th>
           </tr>
@@ -186,19 +186,19 @@ td{font-size:14px;}
       </table>
     </div>
 
-    <!-- Pestaña Catálogo -->
+    <!-- PestaÃ±a CatÃ¡logo -->
     <div id="tab-catalogo" class="tab-content">
       <div class="control-panel">
-        <h3 style="margin-top:0;font-family:var(--font-display);">Subir Catálogo desde Excel</h3>
+        <h3 style="margin-top:0;font-family:var(--font-display);">Subir CatÃ¡logo desde Excel</h3>
         <p style="margin-bottom:20px; font-size:14px;">El archivo `.xlsx` debe tener estas columnas: <strong>Servicio | Codigo | Marca | Producto | Descripcion | Precio | Imagen</strong></p>
         <div style="display:flex; gap:10px; align-items:center;">
           <input type="file" id="excel-file" accept=".xlsx" style="background:var(--steel); padding:10px; border-radius:6px; color:var(--silver);" />
-          <button class="btn-primary" onclick="subirExcel()" id="btn-upload">Subir y Reemplazar Catálogo</button>
-          <a href="/catalogo_ejemplo.xlsx" download class="btn-volver" style="text-decoration:none; margin-left:10px;">📥 Descargar Excel de Ejemplo</a>
+          <button class="btn-primary" onclick="subirExcel()" id="btn-upload">Subir y Reemplazar CatÃ¡logo</button>
+          <a href="/catalogo_ejemplo.xlsx" download class="btn-volver" style="text-decoration:none; margin-left:10px;">ðŸ“¥ Descargar Excel de Ejemplo</a>
         </div>
         
         <div class="search-bar">
-          <input type="text" id="search-cat" placeholder="Buscar por código, marca o producto..." onkeyup="buscarCatalogo(event)">
+          <input type="text" id="search-cat" placeholder="Buscar por cÃ³digo, marca o producto..." onkeyup="buscarCatalogo(event)">
           <button class="btn-volver" onclick="cargarCatalogo()">Buscar</button>
         </div>
       </div>
@@ -220,18 +220,18 @@ td{font-size:14px;}
     </div>
 
 
-    <!-- Pestaña Equipo -->
+    <!-- PestaÃ±a Equipo -->
     <div id="tab-equipo" class="tab-content">
       <div class="control-panel">
         <div class="offer-form">
-          <h3>Añadir Administrador</h3>
+          <h3>AÃ±adir Administrador</h3>
           <div>
-            <label>Correo Electrónico</label>
+            <label>Correo ElectrÃ³nico</label>
             <input type="email" id="u-email" placeholder="ej: ayudante@factoria.com">
           </div>
           <div>
-            <label>Contraseña</label>
-            <input type="password" id="u-pass" placeholder="Mínimo 6 caracteres">
+            <label>ContraseÃ±a</label>
+            <input type="password" id="u-pass" placeholder="MÃ­nimo 6 caracteres">
           </div>
           <div>
             <label>Rol</label>
@@ -252,7 +252,7 @@ td{font-size:14px;}
             <th>ID</th>
             <th>Email</th>
             <th>Rol</th>
-            <th>Fecha de Creación</th>
+            <th>Fecha de CreaciÃ³n</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -265,7 +265,7 @@ td{font-size:14px;}
 
   <script>
 
-    // Lógica de recuperación
+    // LÃ³gica de recuperaciÃ³n
     function mostrarRecuperacion() {
       document.getElementById('login-box-inner').style.display = 'none';
       document.getElementById('recovery-box').style.display = 'block';
@@ -285,7 +285,7 @@ td{font-size:14px;}
         return;
       }
       try {
-        const res = await fetch('http://localhost:3000/api/recuperar', {
+        const res = await fetch('/api/recuperar', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({ email })
@@ -295,7 +295,7 @@ td{font-size:14px;}
         msg.style.display = 'block';
         msg.style.color = res.ok ? '#4CAF50' : 'var(--red)';
       } catch(e) {
-        msg.textContent = 'Error de conexión';
+        msg.textContent = 'Error de conexiÃ³n';
         msg.style.display = 'block';
         msg.style.color = 'var(--red)';
       }
@@ -308,13 +308,13 @@ td{font-size:14px;}
       const tokenURL = urlParams.get('token');
       
       if (!pass || pass.length < 6) {
-        msg.textContent = 'La contraseña debe tener mínimo 6 caracteres';
+        msg.textContent = 'La contraseÃ±a debe tener mÃ­nimo 6 caracteres';
         msg.style.display = 'block';
         msg.style.color = 'var(--red)';
         return;
       }
       try {
-        const res = await fetch('http://localhost:3000/api/reset', {
+        const res = await fetch('/api/reset', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({ token: tokenURL, newPassword: pass })
@@ -325,17 +325,17 @@ td{font-size:14px;}
         msg.style.color = res.ok ? '#4CAF50' : 'var(--red)';
         if(res.ok) {
            setTimeout(() => {
-              window.location.href = 'http://localhost:3000/admin.html';
+              window.location.href = '/admin.html';
            }, 2000);
         }
       } catch(e) {
-        msg.textContent = 'Error de conexión';
+        msg.textContent = 'Error de conexiÃ³n';
         msg.style.display = 'block';
         msg.style.color = 'var(--red)';
       }
     }
 
-    // Detectar si venimos de un enlace de recuperación
+    // Detectar si venimos de un enlace de recuperaciÃ³n
     window.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
       if (urlParams.has('token')) {
@@ -365,7 +365,7 @@ td{font-size:14px;}
       const err = document.getElementById('login-error');
       
       try {
-        const res = await fetch('http://localhost:3000/api/login', {
+        const res = await fetch('/api/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email:u, password:p })
@@ -389,13 +389,13 @@ td{font-size:14px;}
           err.style.display = 'block';
         }
       } catch(e) {
-        err.textContent = 'Error de conexión';
+        err.textContent = 'Error de conexiÃ³n';
         err.style.display = 'block';
       }
     }
 
     async function cerrarSesion() {
-      await fetch('http://localhost:3000/api/logout', {
+      await fetch('/api/logout', {
         method: 'POST',
         headers: {'Authorization': 'Bearer ' + token}
       });
@@ -415,7 +415,7 @@ td{font-size:14px;}
     async function cargarUsuarios() {
       if (userRole !== 'SUPERADMIN') return;
       try {
-        const res = await fetch('http://localhost:3000/api/usuarios', {
+        const res = await fetch('/api/usuarios', {
           headers: { 'Authorization': 'Bearer ' + token }
         });
         if(res.status === 401 || res.status === 403) { cerrarSesion(); return; }
@@ -450,10 +450,10 @@ td{font-size:14px;}
       const password = document.getElementById('u-pass').value;
       const rol = document.getElementById('u-rol').value;
 
-      if(!email || !password) return alert('Completa email y contraseña');
+      if(!email || !password) return alert('Completa email y contraseÃ±a');
 
       try {
-        const res = await fetch('http://localhost:3000/api/usuarios', {
+        const res = await fetch('/api/usuarios', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -471,14 +471,14 @@ td{font-size:14px;}
           alert('Error: ' + err.error);
         }
       } catch(err) {
-        alert('Error de conexión');
+        alert('Error de conexiÃ³n');
       }
     }
 
     async function eliminarUsuario(id) {
-      if(!confirm('¿Estás seguro de eliminar este usuario?')) return;
+      if(!confirm('Â¿EstÃ¡s seguro de eliminar este usuario?')) return;
       try {
-        const res = await fetch('http://localhost:3000/api/usuarios/' + id, {
+        const res = await fetch('/api/usuarios/' + id, {
           method: 'DELETE',
           headers: { 'Authorization': 'Bearer ' + token }
         });
@@ -489,7 +489,7 @@ td{font-size:14px;}
           alert('Error: ' + err.error);
         }
       } catch(err) {
-        alert('Error de conexión');
+        alert('Error de conexiÃ³n');
       }
     }
 
@@ -511,12 +511,12 @@ td{font-size:14px;}
 
     async function cargarClientes() {
       try {
-        const res = await authFetch('http://localhost:3000/api/clientes');
+        const res = await authFetch('/api/clientes');
         const clientes = await res.json();
         const tbody = document.getElementById('tabla-clientes');
         tbody.innerHTML = '';
         if(clientes.length === 0) {
-          tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--silver);padding:40px;">No hay clientes registrados aún.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--silver);padding:40px;">No hay clientes registrados aÃºn.</td></tr>';
           return;
         }
         clientes.forEach(c => {
@@ -542,7 +542,7 @@ td{font-size:14px;}
 
     async function cargarOfertas() {
       try {
-        const res = await fetch('http://localhost:3000/api/ofertas?t=' + new Date().getTime()); // Público
+        const res = await fetch('/api/ofertas?t=' + new Date().getTime()); // PÃºblico
         ofertasGlobal = await res.json();
         const tbody = document.getElementById('tabla-ofertas');
         tbody.innerHTML = '';
@@ -581,7 +581,7 @@ td{font-size:14px;}
       const titulo = document.getElementById('o-titulo').value.trim();
       const precio_nuevo = document.getElementById('o-precio-new').value.trim();
       if (!titulo || !precio_nuevo) {
-        alert('El título y el precio nuevo son obligatorios.');
+        alert('El tÃ­tulo y el precio nuevo son obligatorios.');
         return;
       }
       const data = {
@@ -590,10 +590,10 @@ td{font-size:14px;}
         descripcion: document.getElementById('o-desc').value,
         precio_antiguo: document.getElementById('o-precio-old').value,
         precio_nuevo: precio_nuevo,
-        imagen: document.getElementById('o-img').value || '🔥'
+        imagen: document.getElementById('o-img').value || 'ðŸ”¥'
       };
       const id = document.getElementById('o-id').value;
-      const url = id ? 'http://localhost:3000/api/ofertas/' + id : 'http://localhost:3000/api/ofertas';
+      const url = id ? '/api/ofertas/' + id : '/api/ofertas';
       const method = id ? 'PUT' : 'POST';
 
       const res = await authFetch(url, {
@@ -622,8 +622,8 @@ td{font-size:14px;}
 
     async function eliminarOferta(e, id) {
       if(e) e.preventDefault();
-      if(!confirm('¿Seguro que deseas eliminar esta oferta?')) return;
-      const res = await authFetch('http://localhost:3000/api/ofertas/' + id, { method: 'DELETE' });
+      if(!confirm('Â¿Seguro que deseas eliminar esta oferta?')) return;
+      const res = await authFetch('/api/ofertas/' + id, { method: 'DELETE' });
       if (res.ok) cargarOfertas();
       else alert('Error al eliminar');
     }
@@ -637,11 +637,11 @@ td{font-size:14px;}
       document.getElementById('o-precio-old').value = '';
       document.getElementById('o-precio-new').value = '';
       document.getElementById('o-img').value = '';
-      document.querySelector('.offer-form h3').textContent = 'Añadir nueva oferta';
+      document.querySelector('.offer-form h3').textContent = 'AÃ±adir nueva oferta';
       document.getElementById('btn-cancelar').style.display = 'none';
     }
 
-    // Funciones del Catálogo
+    // Funciones del CatÃ¡logo
     async function subirExcel() {
       const fileInput = document.getElementById('excel-file');
       if(fileInput.files.length === 0) return alert('Selecciona un archivo primero');
@@ -653,7 +653,7 @@ td{font-size:14px;}
       btn.disabled = true;
 
       try {
-        const res = await fetch('http://localhost:3000/api/catalogo/upload', {
+        const res = await fetch('/api/catalogo/upload', {
           method: 'POST',
           headers: { 'Authorization': 'Bearer ' + token },
           body: formData
@@ -668,9 +668,9 @@ td{font-size:14px;}
           alert(data.error || 'Error al subir');
         }
       } catch(e) {
-        alert('Error de conexión');
+        alert('Error de conexiÃ³n');
       }
-      btn.textContent = 'Subir y Reemplazar Catálogo';
+      btn.textContent = 'Subir y Reemplazar CatÃ¡logo';
       btn.disabled = false;
     }
 
@@ -681,7 +681,7 @@ td{font-size:14px;}
     async function cargarCatalogo() {
       const q = document.getElementById('search-cat').value;
       try {
-        const res = await fetch('http://localhost:3000/api/catalogo?q=' + encodeURIComponent(q));
+        const res = await fetch('/api/catalogo?q=' + encodeURIComponent(q));
         const items = await res.json();
         const tbody = document.getElementById('tabla-catalogo');
         tbody.innerHTML = '';
@@ -708,3 +708,4 @@ td{font-size:14px;}
   </script>
 </body>
 </html>
+

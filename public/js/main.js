@@ -15,7 +15,7 @@ const ofertasNav = document.getElementById('ofertasNav');
 
 async function cargarOfertasWeb() {
   try {
-    const res = await fetch('http://localhost:3000/api/ofertas');
+    const res = await fetch('/api/ofertas');
     const ofertas = await res.json();
     
     if(ofertas.length === 0) {
@@ -46,7 +46,7 @@ async function cargarOfertasWeb() {
       ofertasTrack.appendChild(card);
     });
     
-    // Aplicar clase para animación continua CSS
+    // Aplicar clase para animaciÃ³n continua CSS
     ofertasTrack.classList.add('continuous-marquee');
     
   } catch(err) {
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.querySelectorAll('a[href="#contacto"]:not(.nav-links a)').forEach(function(link) {
     const texto = link.textContent.trim().toLowerCase();
-    if (texto.includes('reservar') || texto.includes('contáct') || texto.includes('contact')) {
+    if (texto.includes('reservar') || texto.includes('contÃ¡ct') || texto.includes('contact')) {
       link.href = crearWhatsAppUrl(link.textContent.trim());
       link.target = '_blank';
       link.rel = 'noopener';
@@ -231,7 +231,7 @@ async function enviarFormulario(e) {
   btn.style.opacity = '0.6';
 
   try {
-    var res = await fetch('http://localhost:3000/api/clientes', {
+    var res = await fetch('/api/clientes', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
@@ -311,7 +311,7 @@ document.addEventListener('mousemove', function(e) {
   }, 800);
 });
 
-// ====== CATÁLOGO MODAL ======
+// ====== CATÃLOGO MODAL ======
 async function abrirCatalogo(servicio) {
   const slug = servicio
     .toLowerCase()
@@ -329,19 +329,19 @@ async function abrirCatalogo(servicio) {
     return;
   }
 
-  document.getElementById('modalTitle').textContent = 'Catálogo: ' + servicio;
+  document.getElementById('modalTitle').textContent = 'CatÃ¡logo: ' + servicio;
   document.getElementById('catalogoModal').classList.add('active');
   document.body.style.overflow = 'hidden';
   
   const modalBody = document.getElementById('modalBody');
-  modalBody.innerHTML = '<p style="text-align:center;color:var(--silver);">Cargando catálogo...</p>';
+  modalBody.innerHTML = '<p style="text-align:center;color:var(--silver);">Cargando catÃ¡logo...</p>';
   
   try {
-    const res = await fetch('http://localhost:3000/api/catalogo?servicio=' + encodeURIComponent(servicio));
+    const res = await fetch('/api/catalogo?servicio=' + encodeURIComponent(servicio));
     const items = await res.json();
     
     if(items.length === 0) {
-      modalBody.innerHTML = '<p style="text-align:center;color:var(--silver);">No hay productos registrados para este servicio aún.</p>';
+      modalBody.innerHTML = '<p style="text-align:center;color:var(--silver);">No hay productos registrados para este servicio aÃºn.</p>';
       return;
     }
     
@@ -352,7 +352,7 @@ async function abrirCatalogo(servicio) {
       
       const imgHtml = i.imagen && i.imagen.length > 5 
         ? `<img src="${i.imagen}" alt="${i.producto}">` 
-        : (i.imagen || '⚙');
+        : (i.imagen || 'âš™');
         
       const marcaHtml = i.marca ? ` - ${i.marca}` : '';
       const codHtml = i.codigo ? `COD: ${i.codigo}${marcaHtml}` : (i.marca ? `MARCA: ${i.marca}` : '');
@@ -370,7 +370,7 @@ async function abrirCatalogo(servicio) {
     });
     
   } catch(err) {
-    modalBody.innerHTML = '<p style="text-align:center;color:var(--red);">Error cargando el catálogo.</p>';
+    modalBody.innerHTML = '<p style="text-align:center;color:var(--red);">Error cargando el catÃ¡logo.</p>';
   }
 }
 
@@ -423,3 +423,48 @@ window.addEventListener('scroll', () => {
 });
 // Trigger once on load
 window.dispatchEvent(new Event('scroll'));
+
+// ====== HAMBURGER MENU (MÓVIL) ======
+function toggleMenu() {
+  const navLinks = document.querySelector('.nav-links');
+  const nav = document.querySelector('nav');
+  const hamburger = document.querySelector('.hamburger');
+  const isOpen = navLinks.classList.toggle('open');
+  nav.classList.toggle('menu-open', isOpen);
+  // Animar el hamburger → X
+  const spans = hamburger.querySelectorAll('span');
+  if (isOpen) {
+    spans[0].style.cssText = 'transform:translateY(7px) rotate(45deg);';
+    spans[1].style.cssText = 'opacity:0;';
+    spans[2].style.cssText = 'transform:translateY(-7px) rotate(-45deg);';
+  } else {
+    spans[0].style.cssText = '';
+    spans[1].style.cssText = '';
+    spans[2].style.cssText = '';
+  }
+}
+
+// Cerrar menú al hacer click en un link del nav
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    const navLinks = document.querySelector('.nav-links');
+    const nav = document.querySelector('nav');
+    const hamburger = document.querySelector('.hamburger');
+    if (navLinks.classList.contains('open')) {
+      navLinks.classList.remove('open');
+      nav.classList.remove('menu-open');
+      hamburger.querySelectorAll('span').forEach(s => s.style.cssText = '');
+    }
+  });
+});
+
+// Cerrar menú al hacer click fuera
+document.addEventListener('click', (e) => {
+  const nav = document.querySelector('nav');
+  const navLinks = document.querySelector('.nav-links');
+  if (navLinks && navLinks.classList.contains('open') && !nav.contains(e.target)) {
+    navLinks.classList.remove('open');
+    nav.classList.remove('menu-open');
+    document.querySelector('.hamburger').querySelectorAll('span').forEach(s => s.style.cssText = '');
+  }
+});
