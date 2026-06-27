@@ -500,3 +500,29 @@ const scrollSpyObserver = new IntersectionObserver((entries) => {
 sections.forEach(sec => {
   if (sec) scrollSpyObserver.observe(sec);
 });
+
+// ====== EFECTO LUZ ROJA EN TARJETAS AL SCROLLEAR (MÓVIL) ======
+const cards = document.querySelectorAll('.service-card, .producto-card, .oferta-card');
+
+const cardObserverOptions = {
+  root: null,
+  rootMargin: '-30% 0px -30% 0px', // Se activa cuando la tarjeta está en el centro de la pantalla
+  threshold: 0
+};
+
+const cardObserver = new IntersectionObserver((entries) => {
+  const isMobile = window.innerWidth <= 900;
+  if (!isMobile) return; // Solo aplicamos el efecto automático en móvil
+  
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active-hover');
+    } else {
+      entry.target.classList.remove('active-hover');
+    }
+  });
+}, cardObserverOptions);
+
+cards.forEach(card => {
+  if (card) cardObserver.observe(card);
+});
