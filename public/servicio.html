@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script>
+  if (window.location.protocol === 'file:') {
+    window.location.href = 'http://localhost:3000/servicio.html' + window.location.search;
+  }
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Servicio - Factoria Ronald</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body class="service-detail-page">
+
+<div class="aws-bg-container" aria-hidden="true">
+  <div class="aws-glow-drift"></div>
+  <div class="aws-particles">
+    <div class="particle" style="left:8%;top:20%;width:8px;height:8px;background-color:#FF9900;"></div>
+    <div class="particle" style="left:16%;top:56%;width:6px;height:6px;background-color:#00C853;"></div>
+    <div class="particle" style="left:82%;top:24%;width:7px;height:7px;background-color:#008296;"></div>
+    <div class="particle" style="left:92%;top:64%;width:5px;height:5px;background-color:#FF9900;"></div>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html#servicios" aria-label="Volver a servicios">
+      <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px; height:28px; margin-right:8px; color: var(--aws-orange);">
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+      </svg>
+      <span style="display:flex; flex-direction:column; line-height:1;">
+        <span style="font-size:16px; font-weight:900; letter-spacing:0.5px;">FACTORÍA</span>
+        <span style="font-size:12px; font-weight:500; color:var(--aws-orange); letter-spacing:1px;">AUTOMOTRIZ RONALD</span>
+      </span>
+    </a>
+    <ul class="nav-links aws-mono">
+      <li><a href="index.html#servicios">Servicios</a></li>
+      <li><a href="index.html#ofertas">Ofertas</a></li>
+      <li><a href="index.html#productos">Productos</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
+    </ul>
+    <a class="nav-cta" id="navWhatsapp" href="https://wa.me/51910029387" target="_blank" rel="noopener">Reservar cita</a>
+  </div>
+</nav>
+
+<main>
+  <section class="detalle-hero">
+    <div class="container detalle-hero-grid">
+      <div class="detalle-copy">
+        <a class="back-link" href="index.html#servicios">Volver a servicios</a>
+        <p class="section-label" id="servicioEtiqueta">Servicio automotriz</p>
+        <h1 class="section-title" id="servicioTitulo">Servicio</h1>
+        <p class="detalle-lead" id="servicioResumen"></p>
+        <p class="section-sub" id="servicioDescripcion"></p>
+        <div class="detalle-actions">
+          <a class="slide-btn" id="whatsappCotizacion" href="https://wa.me/51910029387" target="_blank" rel="noopener">Solicitar cotización</a>
+          <a class="detalle-secondary" href="#detalleCatalogo">Ver catálogo</a>
+        </div>
+      </div>
+      <div class="detalle-media">
+        <img id="servicioImagen" src="assets/images/serv_mecanica.png" alt="Servicio automotriz">
+      </div>
+    </div>
+  </section>
+
+  <section class="detalle-section">
+    <div class="container">
+      <div class="detalle-section-head">
+        <div>
+          <p class="section-label">Trabajos incluidos</p>
+          <h2 class="section-title">Lo que hacemos</h2>
+        </div>
+      </div>
+      <div class="detalle-grid" id="servicioLista"></div>
+    </div>
+  </section>
+
+  <section class="detalle-section detalle-process-section">
+    <div class="container detalle-process">
+      <div>
+        <p class="section-label">Proceso</p>
+        <h2 class="section-title">Atención clara</h2>
+        <p class="section-sub">Te explicamos el problema, el alcance del trabajo y el costo antes de avanzar.</p>
+      </div>
+      <ol id="servicioProceso" class="detalle-process-list"></ol>
+    </div>
+  </section>
+
+  <section class="detalle-section" id="detalleCatalogo">
+    <div class="container">
+      <div class="detalle-section-head">
+        <div>
+          <p class="section-label">Precios y opciones</p>
+          <h2 class="section-title">Catálogo</h2>
+        </div>
+        <p class="catalogo-status" id="catalogoEstado">Cargando catálogo...</p>
+      </div>
+      <div class="detalle-catalogo" id="servicioCatalogo"></div>
+    </div>
+  </section>
+</main>
+
+<script src="js/servicio.js"></script>
+</body>
+</html>

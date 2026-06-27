@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script>
+  if (window.location.protocol === 'file:') {
+    window.location.href = 'http://localhost:3000/';
+  }
+</script>
+
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Factoría — Automotriz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/styles.css"/>
+<link rel="icon" type="image/png" href="assets/logo-firme.png"/>
+</head>
+<body>
+
+<!-- AWS DYNAMIC BACKGROUND -->
+<div class="aws-bg-container" aria-hidden="true">
+  <div class="aws-glow-drift"></div>
+  <div class="aws-particles">
+    <div class="particle" style="left:7%;top:18%;width:10px;height:10px;background-color:#FF9900;"></div>
+    <div class="particle" style="left:13%;top:28%;width:6px;height:6px;background-color:#FF9900;"></div>
+    <div class="particle" style="left:5%;top:38%;width:8px;height:8px;background-color:#00C853;"></div>
+    <div class="particle" style="left:18%;top:14%;width:5px;height:5px;background-color:#008296;"></div>
+    <div class="particle" style="left:85%;top:16%;width:9px;height:9px;background-color:#FF9900;"></div>
+    <div class="particle" style="left:91%;top:26%;width:6px;height:6px;background-color:#00C853;"></div>
+    <div class="particle" style="left:80%;top:34%;width:7px;height:7px;background-color:#008296;"></div>
+    <div class="particle" style="left:93%;top:42%;width:4px;height:4px;background-color:#FF9900;"></div>
+    <div class="particle" style="left:3%;top:55%;width:5px;height:5px;background-color:#008296;"></div>
+    <div class="particle" style="left:10%;top:62%;width:7px;height:7px;background-color:#FF9900;"></div>
+    <div class="particle" style="left:90%;top:58%;width:6px;height:6px;background-color:#00C853;"></div>
+    <div class="particle" style="left:96%;top:68%;width:4px;height:4px;background-color:#FF9900;"></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html" aria-label="Ir a la pagina inicial">
+      <img src="assets/logo-firme.png" alt="Factoría Ronald Logo" style="width:45px; height:auto; margin-right:12px; border-radius:4px;" />
+      <span style="display:flex; flex-direction:column; line-height:1;">
+        <span style="font-size:16px; font-weight:900; letter-spacing:0.5px;">FACTORÍA</span>
+        <span style="font-size:12px; font-weight:500; color:var(--aws-orange); letter-spacing:1px;">AUTOMOTRIZ RONALD</span>
+      </span>
+    </a>
+    <ul class="nav-links aws-mono">
+      
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#ofertas">Ofertas</a></li>
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#mantenimiento">Mantenimiento</a></li>
+      <li><a href="#testimonios">Clientes</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <div style="display:flex;gap:16px;align-items:center;">
+      <a href="admin.html" class="nav-admin" style="color:var(--silver);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;">Admin</a>
+      <a href="https://wa.me/51910029387?text=Hola%20Factor%C3%ADa%20Ronald%2C%20deseo%20reservar%20una%20cita" target="_blank" class="nav-cta" style="text-decoration:none;">Reservar cita</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+
+<!-- BRAND MARQUEE TOP -->
+<div class="brand-marquee">
+  <div class="marquee-track">
+
+    <img src="https://logo.clearbit.com/toyota.com" alt="Toyota" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/nissan-global.com" alt="Nissan" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/hyundai.com" alt="Hyundai" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/kia.com" alt="Kia" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/chevrolet.com" alt="Chevrolet" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/vw.com" alt="Volkswagen" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/globalsuzuki.com" alt="Suzuki" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/mazda.com" alt="Mazda" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/renault.com" alt="Renault" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/honda.com" alt="Honda" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/ford.com" alt="Ford" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/subaru.com" alt="Subaru" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/mitsubishi-motors.com" alt="Mitsubishi" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/peugeot.com" alt="Peugeot" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/jeep.com" alt="Jeep" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/bmw.com" alt="BMW" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/audi.com" alt="Audi" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/mercedes-benz.com" alt="Mercedes" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/toyota.com" alt="Toyota" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/nissan-global.com" alt="Nissan" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/hyundai.com" alt="Hyundai" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/kia.com" alt="Kia" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/chevrolet.com" alt="Chevrolet" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/vw.com" alt="Volkswagen" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/globalsuzuki.com" alt="Suzuki" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/mazda.com" alt="Mazda" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/renault.com" alt="Renault" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/honda.com" alt="Honda" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/ford.com" alt="Ford" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;>'+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/subaru.com" alt="Subaru" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;>'+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/mitsubishi-motors.com" alt="Mitsubishi" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;>'+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/peugeot.com" alt="Peugeot" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;>'+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/jeep.com" alt="Jeep" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;>'+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/bmw.com" alt="BMW" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;>'+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/audi.com" alt="Audi" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;>'+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/mercedes-benz.com" alt="Mercedes" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;>'+this.alt+'</span>'">
+  </div>
+</div>
+
+<!-- HERO CAROUSEL CONTINUO -->
+<section class="hero" id="hero">
+  <div class="slides-wrapper continuous-hero" id="slidesWrapper">
+    
+
+    <!-- Slide 1 -->
+    <div class="slide">
+      <div class="slide-bg" style="background:url('assets/images/slide1.png') center/cover no-repeat;"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <span class="slide-eyebrow">Bienvenido a Factoría</span>
+        <h1 class="slide-title">Tu auto, nuestra <em>pasión</em></h1>
+        <p class="slide-sub">Centro automotriz de confianza con más de 15 años de experiencia en Lima.</p>
+        <a href="#servicios" class="slide-btn">Ver servicios</a>
+        <a href="#contacto" class="slide-btn outline">Reservar cita</a>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+      <div class="slide-bg" style="background:url('assets/images/slide2.png') center/cover no-repeat;"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <span class="slide-eyebrow">Oferta especial — Solo este mes</span>
+        <h1 class="slide-title">Cambio de aceite <em>S/ 89</em></h1>
+        <p class="slide-sub">Incluye revisión de 15 puntos y aceite sintético 5W-30. Todos los vehículos.</p>
+        <a href="#ofertas" class="slide-btn">Ver todas las ofertas</a>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+      <div class="slide-bg" style="background:url('assets/images/slide3.png') center/cover no-repeat;"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <span class="slide-eyebrow">Neumáticos</span>
+        <h1 class="slide-title">Rueda con <em>seguridad</em></h1>
+        <p class="slide-sub">Las mejores marcas: Michelin, Bridgestone, Continental. Instalación incluida.</p>
+        <a href="#productos" class="slide-btn">Ver catálogo</a>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+      <div class="slide-bg" style="background:url('assets/images/slide4.png') center/cover no-repeat;"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <span class="slide-eyebrow">Diagnóstico computarizado</span>
+        <h1 class="slide-title">Tecnología al <em>servicio</em> de tu motor</h1>
+        <p class="slide-sub">Equipos de última generación para detectar cualquier falla con precisión.</p>
+        <a href="#servicios" class="slide-btn">Más información</a>
+      </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide">
+      <div class="slide-bg" style="background:url('assets/images/slide5.png') center/cover no-repeat;"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <span class="slide-eyebrow">Pack completo</span>
+        <h1 class="slide-title">Mantenimiento <em>total</em> desde S/ 199</h1>
+        <p class="slide-sub">Aceite + filtros + revisión de frenos + alineación. El pack más completo del mercado.</p>
+        <a href="#mantenimiento" class="slide-btn">Ver packs</a>
+      </div>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="slide">
+      <div class="slide-bg" style="background:url('assets/images/slide6.png') center/cover no-repeat;"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <span class="slide-eyebrow">Sistema de frenos</span>
+        <h1 class="slide-title">Frena con <em>confianza</em></h1>
+        <p class="slide-sub">Revisión gratuita de frenos con cualquier servicio. Pastillas y discos de primera calidad.</p>
+        <a href="#servicios" class="slide-btn">Agendar revisión</a>
+      </div>
+    </div>
+
+    <!-- Slide 7 -->
+    <div class="slide">
+      <div class="slide-bg" style="background:url('assets/images/slide1.png') center/cover no-repeat;"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <span class="slide-eyebrow">Repuestos originales</span>
+        <h1 class="slide-title">Piezas <em>100%</em> originales</h1>
+        <p class="slide-sub">Trabajamos con proveedores certificados. Garantía en todos los repuestos instalados.</p>
+        <a href="#productos" class="slide-btn">Ver repuestos</a>
+      </div>
+    </div>
+
+    <!-- Slide 8 -->
+    <div class="slide">
+      <div class="slide-bg" style="background:url('assets/images/slide5.png') center/cover no-repeat;"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <span class="slide-eyebrow">Tu taller de confianza</span>
+        <h1 class="slide-title">+5,000 clientes <em>satisfechos</em></h1>
+        <p class="slide-sub">El taller automotriz más recomendado de Lima. Puntualidad y honestidad garantizadas.</p>
+        <a href="#testimonios" class="slide-btn">Ver opiniones</a>
+        <a href="#contacto" class="slide-btn outline">Contáctanos</a>
+      </div>
+    </div>
+
+  
+    
+
+    <!-- Slide 1 -->
+    <div class="slide">
+      <div class="slide-bg" style="background:url('assets/images/slide1.png') center/cover no-repeat;"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <span class="slide-eyebrow">Bienvenido a Factoría</span>
+        <h1 class="slide-title">Tu auto, nuestra <em>pasión</em></h1>
+        <p class="slide-sub">Centro automotriz de confianza con más de 15 años de experiencia en Lima.</p>
+        <a href="#servicios" class="slide-btn">Ver servicios</a>
+        <a href="#contacto" class="slide-btn outline">Reservar cita</a>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+      <div class="slide-bg" style="background:url('assets/images/slide2.png') center/cover no-repeat;"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <span class="slide-eyebrow">Oferta especial — Solo este mes</span>
+        <h1 class="slide-title">Cambio de aceite <em>S/ 89</em></h1>
+        <p class="slide-sub">Incluye revisión de 15 puntos y aceite sintético 5W-30. Todos los vehículos.</p>
+        <a href="#ofertas" class="slide-btn">Ver todas las ofertas</a>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+      <div class="slide-bg" style="background:url('assets/images/slide3.png') center/cover no-repeat;"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <span class="slide-eyebrow">Neumáticos</span>
+        <h1 class="slide-title">Rueda con <em>seguridad</em></h1>
+        <p class="slide-sub">Las mejores marcas: Michelin, Bridgestone, Continental. Instalación incluida.</p>
+        <a href="#productos" class="slide-btn">Ver catálogo</a>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+      <div class="slide-bg" style="background:url('assets/images/slide4.png') center/cover no-repeat;"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <span class="slide-eyebrow">Diagnóstico computarizado</span>
+        <h1 class="slide-title">Tecnología al <em>servicio</em> de tu motor</h1>
+        <p class="slide-sub">Equipos de última generación para detectar cualquier falla con precisión.</p>
+        <a href="#servicios" class="slide-btn">Más información</a>
+      </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide">
+      <div class="slide-bg" style="background:url('assets/images/slide5.png') center/cover no-repeat;"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <span class="slide-eyebrow">Pack completo</span>
+        <h1 class="slide-title">Mantenimiento <em>total</em> desde S/ 199</h1>
+        <p class="slide-sub">Aceite + filtros + revisión de frenos + alineación. El pack más completo del mercado.</p>
+        <a href="#mantenimiento" class="slide-btn">Ver packs</a>
+      </div>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="slide">
+      <div class="slide-bg" style="background:url('assets/images/slide6.png') center/cover no-repeat;"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <span class="slide-eyebrow">Sistema de frenos</span>
+        <h1 class="slide-title">Frena con <em>confianza</em></h1>
+        <p class="slide-sub">Revisión gratuita de frenos con cualquier servicio. Pastillas y discos de primera calidad.</p>
+        <a href="#servicios" class="slide-btn">Agendar revisión</a>
+      </div>
+    </div>
+
+    <!-- Slide 7 -->
+    <div class="slide">
+      <div class="slide-bg" style="background:url('assets/images/slide1.png') center/cover no-repeat;"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <span class="slide-eyebrow">Repuestos originales</span>
+        <h1 class="slide-title">Piezas <em>100%</em> originales</h1>
+        <p class="slide-sub">Trabajamos con proveedores certificados. Garantía en todos los repuestos instalados.</p>
+        <a href="#productos" class="slide-btn">Ver repuestos</a>
+      </div>
+    </div>
+
+    <!-- Slide 8 -->
+    <div class="slide">
+      <div class="slide-bg" style="background:url('assets/images/slide5.png') center/cover no-repeat;"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <span class="slide-eyebrow">Tu taller de confianza</span>
+        <h1 class="slide-title">+5,000 clientes <em>satisfechos</em></h1>
+        <p class="slide-sub">El taller automotriz más recomendado de Lima. Puntualidad y honestidad garantizadas.</p>
+        <a href="#testimonios" class="slide-btn">Ver opiniones</a>
+        <a href="#contacto" class="slide-btn outline">Contáctanos</a>
+      </div>
+    </div>
+
+   <!-- Duplicado para el marquee infinito -->
+  </div>
+</section>
+
+<!-- BRAND MARQUEE BOTTOM -->
+<div class="brand-marquee">
+  <div class="marquee-track reverse">
+
+    <img src="https://logo.clearbit.com/toyota.com" alt="Toyota" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/nissan-global.com" alt="Nissan" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/hyundai.com" alt="Hyundai" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/kia.com" alt="Kia" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/chevrolet.com" alt="Chevrolet" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/vw.com" alt="Volkswagen" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/globalsuzuki.com" alt="Suzuki" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/mazda.com" alt="Mazda" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/renault.com" alt="Renault" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/honda.com" alt="Honda" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/ford.com" alt="Ford" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/subaru.com" alt="Subaru" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/mitsubishi-motors.com" alt="Mitsubishi" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/peugeot.com" alt="Peugeot" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/jeep.com" alt="Jeep" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/bmw.com" alt="BMW" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/audi.com" alt="Audi" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/mercedes-benz.com" alt="Mercedes" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/toyota.com" alt="Toyota" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/nissan-global.com" alt="Nissan" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/hyundai.com" alt="Hyundai" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/kia.com" alt="Kia" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/chevrolet.com" alt="Chevrolet" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/vw.com" alt="Volkswagen" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/globalsuzuki.com" alt="Suzuki" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/mazda.com" alt="Mazda" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/renault.com" alt="Renault" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/honda.com" alt="Honda" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;># '+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/ford.com" alt="Ford" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;>'+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/subaru.com" alt="Subaru" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;>'+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/mitsubishi-motors.com" alt="Mitsubishi" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;>'+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/peugeot.com" alt="Peugeot" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;>'+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/jeep.com" alt="Jeep" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;>'+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/bmw.com" alt="BMW" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;>'+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/audi.com" alt="Audi" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;>'+this.alt+'</span>'">
+    <img src="https://logo.clearbit.com/mercedes-benz.com" alt="Mercedes" class="brand-logo" onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;>'+this.alt+'</span>'">
+  </div>
+</div>
+
+
+
+<!-- QUIENES SOMOS -->
+<section id="nosotros" class="nosotros-section">
+  <div class="container">
+    <div class="nosotros-content">
+      <div class="nosotros-text reveal">
+        <h2>¿Quiénes <span>Somos?</span></h2>
+        <p class="lead"><strong>Factoría Automotriz Ronald</strong> nace de la auténtica pasión por los motores y el compromiso con el trabajo bien hecho.</p>
+        <p>Somos un equipo de mecánicos profesionales que comenzó con un gran sueño: transformar la industria del servicio automotriz mediante la honestidad técnica y la excelencia operativa. A lo largo de los años, nuestro esfuerzo incansable, dedicación absoluta y atención al detalle nos han permitido crecer y ganarnos la confianza de cientos de clientes.</p>
+        <p>No somos un taller convencional; somos una clínica automotriz donde cada vehículo es tratado con el mayor rigor tecnológico y humano. Nuestra juventud como empresa es nuestro principal motor: nos impulsa a mantenernos a la vanguardia, a innovar en cada diagnóstico y a superar constantemente las expectativas de quienes confían su seguridad en nuestras manos.</p>
+      </div>
+      <div class="nosotros-image reveal" style="transition-delay: 0.2s">
+        <!-- Placeholder para foto del taller/equipo, por ahora un bloque elegante -->
+        <div class="image-wrapper">
+          <img src="assets/logo-firme.png" alt="Mecánico Profesional Factoría Ronald" style="width:100%; height:100%; object-fit:contain; background-color: var(--black); padding: 20px; border-radius:16px;">
+          <div class="glow-effect"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISION VISION VALORES -->
+<div id="filosofia" class="filosofia-inner" style="margin-top: 0px;">
+  <div class="container">
+    <div class="section-header reveal" style="text-align: center;">
+      <h2>Nuestra <span>Filosofía Corporativa</span></h2>
+      <p>Construyendo el futuro automotriz a través de la excelencia técnica, el trabajo honrado y la mejora continua.</p>
+    </div>
+    <div class="filosofia-grid">
+      <div class="filosofia-card reveal">
+        <div class="icon" style="color: var(--aws-orange);">
+          <!-- Target/Mision Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="6"></circle>
+            <circle cx="12" cy="12" r="2"></circle>
+          </svg>
+        </div>
+        <h3>Misión</h3>
+        <p>Proporcionar soluciones automotrices integrales de máxima calidad, asegurando el rendimiento óptimo y la seguridad de cada vehículo que ingresa a nuestras instalaciones. Nos comprometemos a brindar diagnósticos precisos y transparentes, respaldados por un equipo técnico en constante capacitación y guiados por una inquebrantable ética de trabajo.</p>
+      </div>
+      <div class="filosofia-card reveal" style="transition-delay: 0.2s">
+        <div class="icon" style="color: var(--aws-orange);">
+          <!-- Vision/Eye Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        </div>
+        <h3>Visión</h3>
+        <p>Consolidarnos como el centro automotriz líder y de mayor confianza a nivel nacional. Aspiramos a ser referentes en innovación y servicio al cliente, demostrando que una empresa joven impulsada por el esfuerzo y la resiliencia puede establecer los más altos estándares de excelencia operativa en la industria automotriz.</p>
+      </div>
+      <div class="filosofia-card reveal" style="transition-delay: 0.4s">
+        <div class="icon" style="color: var(--aws-orange);">
+          <!-- Values/Shield/Heart Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="M9 12l2 2 4-4"></path>
+          </svg>
+        </div>
+        <h3>Valores</h3>
+        <ul>
+          <li><strong>Integridad:</strong> Transparencia y honestidad como base de cada servicio y diagnóstico.</li>
+          <li><strong>Perseverancia:</strong> Afrontamos cada reto mecánico con dedicación absoluta.</li>
+          <li><strong>Evolución:</strong> Apostamos por el aprendizaje continuo y la modernización de nuestros procesos.</li>
+          <li><strong>Compromiso:</strong> La seguridad y satisfacción de nuestros clientes es nuestra prioridad innegociable.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Lo que hacemos</p>
+      <h2 class="section-title">Nuestros <em>servicios</em></h2>
+      <p class="section-sub">Atendemos todo tipo de vehículos. Haz clic en un servicio para ver el catálogo de precios.</p>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card" onclick="abrirCatalogo('Mecánica general')" style="cursor:pointer">
+        <div class="service-img-wrapper"><img src="assets/images/serv_mecanica.png" alt="Mecánica general" class="service-img"></div>
+        <h3>Mecánica general</h3>
+        <p>Reparación y mantenimiento de motor, transmisión y sistema de dirección. Diagnóstico computarizado incluido.</p>
+        <p class="service-price">Ver catálogo →</p>
+      </div>
+      <div class="service-card" onclick="abrirCatalogo('Neumáticos')" style="cursor:pointer">
+        <div class="service-img-wrapper"><img src="assets/images/serv_neumaticos.png" alt="Neumáticos" class="service-img"></div>
+        <h3>Neumáticos</h3>
+        <p>Venta, instalación, balanceo y alineación. Todas las medidas disponibles. Marcas premium y económicas.</p>
+        <p class="service-price">Ver catálogo →</p>
+      </div>
+      <div class="service-card" onclick="abrirCatalogo('Electricidad')" style="cursor:pointer">
+        <div class="service-img-wrapper"><img src="assets/images/serv_electricidad.png" alt="Electricidad" class="service-img"></div>
+        <h3>Electricidad</h3>
+        <p>Sistema eléctrico, batería, alternador, motor de arranque y sistema de inyección electrónica.</p>
+        <p class="service-price">Ver catálogo →</p>
+      </div>
+      <div class="service-card" onclick="abrirCatalogo('Sistema de frenos')" style="cursor:pointer">
+        <div class="service-img-wrapper"><img src="assets/images/serv_frenos.png" alt="Sistema de frenos" class="service-img"></div>
+        <h3>Sistema de frenos</h3>
+        <p>Revisión, cambio de pastillas, discos, líquido de frenos y calibración. Revisión gratuita con cualquier servicio.</p>
+        <p class="service-price">Ver catálogo →</p>
+      </div>
+      <div class="service-card" onclick="abrirCatalogo('Aire acondicionado')" style="cursor:pointer">
+        <div class="service-img-wrapper"><img src="assets/images/serv_aire.png" alt="Aire acondicionado" class="service-img"></div>
+        <h3>Aire acondicionado</h3>
+        <p>Carga de gas refrigerante, limpieza de evaporador, revisión de compresor y sistema completo de A/C.</p>
+        <p class="service-price">Ver catálogo →</p>
+      </div>
+      <div class="service-card" onclick="abrirCatalogo('Cambio de aceite')" style="cursor:pointer">
+        <div class="service-img-wrapper"><img src="assets/images/serv_aceite.png" alt="Cambio de aceite" class="service-img"></div>
+        <h3>Cambio de aceite</h3>
+        <p>Aceites sintéticos, semi-sintéticos y convencionales. Incluye revisión de niveles y filtro de aceite.</p>
+        <p class="service-price">Ver catálogo →</p>
+      </div>
+      <div class="service-card" onclick="abrirCatalogo('Diagnóstico computarizado')" style="cursor:pointer">
+        <div class="service-img-wrapper"><img src="assets/images/serv_diagnostico.png" alt="Diagnóstico computarizado" class="service-img"></div>
+        <h3>Diagnóstico computarizado</h3>
+        <p>Scanner de última generación compatible con todas las marcas. Detección precisa de fallas en minutos.</p>
+        <p class="service-price">Ver catálogo →</p>
+      </div>
+      <div class="service-card" onclick="abrirCatalogo('Lavado y detailing')" style="cursor:pointer">
+        <div class="service-img-wrapper"><img src="assets/images/serv_lavado.png" alt="Lavado y detailing" class="service-img"></div>
+        <h3>Lavado y detailing</h3>
+        <p>Lavado completo, encerado, tratamiento de tapicería, pulido de faros y renovación de pintura.</p>
+        <p class="service-price">Ver catálogo →</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL CATÁLOGO -->
+<div class="modal-overlay" id="catalogoModal" onclick="cerrarCatalogo(event)">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="modalTitle">Catálogo</h2>
+      <button class="modal-close" onclick="cerrarCatalogo()">&times;</button>
+    </div>
+    <div class="modal-body" id="modalBody">
+      <!-- Productos cargados dinámicamente -->
+    </div>
+  </div>
+</div>
+
+<!-- OFERTAS -->
+<section id="ofertas">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Promociones vigentes</p>
+      <h2 class="section-title">Ofertas <em>exclusivas</em></h2>
+      <p class="section-sub">Aprovecha nuestras promociones del mes. Válidas hasta agotar stock. No se acumulan con otras ofertas.</p>
+    </div>
+    <div class="ofertas-carousel reveal">
+      <div class="ofertas-track" id="ofertasTrack">
+        <!-- Ofertas cargadas dinámicamente -->
+      </div>
+    </div>
+    <div class="ofertas-nav" id="ofertasNav"></div>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="productos" style="background:var(--black)">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Tienda</p>
+      <h2 class="section-title">Nuestros <em>productos</em></h2>
+      <p class="section-sub">Repuestos originales, neumáticos, aceites y accesorios. Todo lo que tu vehículo necesita en un solo lugar.</p>
+    </div>
+    <div class="productos-grid reveal">
+      <div class="producto-card">
+        <div class="producto-img"><img src="assets/images/prod_michelin.png" alt="Michelin Primacy 4"></div>
+        <div class="producto-body">
+          <p class="producto-cat">Neumáticos</p>
+          <h4>Michelin Primacy 4</h4>
+          <div class="price">S/ 340 <small>/ unidad</small></div>
+          <button class="add-btn" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Consultar disponibilidad</button>
+        </div>
+      </div>
+      <div class="producto-card">
+        <div class="producto-img"><img src="assets/images/prod_castrol.png" alt="Castrol GTX"></div>
+        <div class="producto-body">
+          <p class="producto-cat">Aceites</p>
+          <h4>Castrol GTX 5W-30 4L</h4>
+          <div class="price">S/ 95 <small>/ litro</small></div>
+          <button class="add-btn" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Consultar disponibilidad</button>
+        </div>
+      </div>
+      <div class="producto-card">
+        <div class="producto-img"><img src="assets/images/prod_bosch.png" alt="Bosch S5"></div>
+        <div class="producto-body">
+          <p class="producto-cat">Baterías</p>
+          <h4>Bosch S5 12V 60Ah</h4>
+          <div class="price">S/ 380 <small>/ und.</small></div>
+          <button class="add-btn" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Consultar disponibilidad</button>
+        </div>
+      </div>
+      <div class="producto-card">
+        <div class="producto-img"><img src="assets/images/prod_brembo.png" alt="Brembo Sport"></div>
+        <div class="producto-body">
+          <p class="producto-cat">Frenos</p>
+          <h4>Pastillas Brembo Sport</h4>
+          <div class="price">S/ 140 <small>/ par</small></div>
+          <button class="add-btn" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Consultar disponibilidad</button>
+        </div>
+      </div>
+      <div class="producto-card">
+        <div class="producto-img"><img src="assets/images/prod_coolant.png" alt="Coolant TOTAL"></div>
+        <div class="producto-body">
+          <p class="producto-cat">Refrigerante</p>
+          <h4>Coolant TOTAL Orgánico</h4>
+          <div class="price">S/ 45 <small>/ litro</small></div>
+          <button class="add-btn" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Consultar disponibilidad</button>
+        </div>
+      </div>
+      <div class="producto-card">
+        <div class="producto-img"><img src="assets/images/prod_bujias.png" alt="Bujías NGK"></div>
+        <div class="producto-body">
+          <p class="producto-cat">Repuestos</p>
+          <h4>Bujías NGK Iridium</h4>
+          <div class="price">S/ 55 <small>/ unidad</small></div>
+          <button class="add-btn" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Consultar disponibilidad</button>
+        </div>
+      </div>
+      <div class="producto-card">
+        <div class="producto-img"><img src="assets/images/prod_bridgestone.png" alt="Bridgestone Ecopia"></div>
+        <div class="producto-body">
+          <p class="producto-cat">Neumáticos</p>
+          <h4>Bridgestone Ecopia EP300</h4>
+          <div class="price">S/ 280 <small>/ unidad</small></div>
+          <button class="add-btn" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Consultar disponibilidad</button>
+        </div>
+      </div>
+      <div class="producto-card">
+        <div class="producto-img"><img src="assets/images/prod_mobil1.png" alt="Mobil 1"></div>
+        <div class="producto-body">
+          <p class="producto-cat">Aceites</p>
+          <h4>Mobil 1 Sintético 0W-40</h4>
+          <div class="price">S/ 135 <small>/ litro</small></div>
+          <button class="add-btn" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Consultar disponibilidad</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANTENIMIENTO -->
+<section id="mantenimiento">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Packs de mantenimiento</p>
+      <h2 class="section-title">Cuida tu auto <em>sin complicaciones</em></h2>
+      <p class="section-sub">Planes de mantenimiento preventivo diseñados para mantener tu vehículo en óptimas condiciones.</p>
+    </div>
+    <div class="mant-grid reveal">
+      <div class="mant-items">
+        <div class="mant-item">
+          <span class="mant-num">01</span>
+          <div>
+            <h4>Revisión de aceite y filtros</h4>
+            <p>Cambio de aceite sintético, filtro de aceite, filtro de aire y filtro de habitáculo cada 5,000 km.</p>
+          </div>
+        </div>
+        <div class="mant-item">
+          <span class="mant-num">02</span>
+          <div>
+            <h4>Inspección de frenos y neumáticos</h4>
+            <p>Medición de espesor de pastillas, presión de neumáticos, estado de discos y revisión de líquido.</p>
+          </div>
+        </div>
+        <div class="mant-item">
+          <span class="mant-num">03</span>
+          <div>
+            <h4>Sistema eléctrico y batería</h4>
+            <p>Prueba de batería, alternador, tensión del circuito y funcionamiento de luces y sensores.</p>
+          </div>
+        </div>
+        <div class="mant-item">
+          <span class="mant-num">04</span>
+          <div>
+            <h4>Diagnóstico computarizado</h4>
+            <p>Scanner OBD-II completo para detectar fallas en motor, transmisión y sistemas electrónicos.</p>
+          </div>
+        </div>
+        <div class="mant-item">
+          <span class="mant-num">05</span>
+          <div>
+            <h4>Revisión de suspensión</h4>
+            <p>Amortiguadores, rótulas, bujes y geometría. Alineación y balanceo incluidos en el pack premium.</p>
+          </div>
+        </div>
+      </div>
+      <div class="mant-visual">
+        <span class="big-icon">🔧</span>
+        <h3>Pack Premium</h3>
+        <p>El mantenimiento más completo para tu tranquilidad. Incluye todos los servicios anteriores más alineación y lavado.</p>
+        <div class="precio-pack">
+          <span>Precio todo incluido</span>
+          <strong>S/ 199</strong>
+        </div>
+        <a href="#contacto" class="slide-btn" style="display:block;margin-top:20px;text-align:center;text-decoration:none">Reservar pack premium</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section id="testimonios">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Lo que dicen nuestros clientes</p>
+      <h2 class="section-title">+5,000 clientes <em>felices</em></h2>
+      <p class="section-sub">La confianza de nuestros clientes es nuestro mayor logro. Lee sus experiencias.</p>
+    </div>
+    <div class="testimonios-grid reveal">
+      <div class="testimonio-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Llevé mi Toyota Corolla para el cambio de aceite y quedé sorprendido. Rápido, puntual y el precio fue exactamente el que me dijeron. Sin sorpresas."</blockquote>
+        <div class="testimonio-autor">
+          <div class="autor-avatar">CM</div>
+          <div>
+            <p class="autor-nombre">Carlos Mendoza</p>
+            <p class="autor-vehiculo">Toyota Corolla 2019</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonio-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Los mejores neumáticos al mejor precio de Lima. Me instalaron 4 Michelin en menos de una hora. El equipo es muy profesional y honesto."</blockquote>
+        <div class="testimonio-autor">
+          <div class="autor-avatar" style="background:#F5782A">LR</div>
+          <div>
+            <p class="autor-nombre">Lucía Ramos</p>
+            <p class="autor-vehiculo">Hyundai Tucson 2021</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonio-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Mi carro tenía una falla rara que otros talleres no encontraron. En Factoría lo diagnosticaron en 30 minutos con el scanner. ¡Increíble!"</blockquote>
+        <div class="testimonio-autor">
+          <div class="autor-avatar" style="background:#1E7E4A">AP</div>
+          <div>
+            <p class="autor-nombre">Andrés Paredes</p>
+            <p class="autor-vehiculo">Chevrolet Cruze 2018</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonio-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Llevo mi flota de 3 autos aquí hace 5 años. Precios justos, trabajo de calidad y siempre cumplen con los tiempos prometidos. Los recomiendo al 100%."</blockquote>
+        <div class="testimonio-autor">
+          <div class="autor-avatar" style="background:#6B3FA0">MV</div>
+          <div>
+            <p class="autor-nombre">María Villanueva</p>
+            <p class="autor-vehiculo">Cliente empresa — 3 vehículos</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonio-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Tremendo servicio el del pack de frenos. Me explicaron todo paso a paso antes de hacer cualquier cosa. Me fui tranquilo sabiendo que mis frenos están perfectos."</blockquote>
+        <div class="testimonio-autor">
+          <div class="autor-avatar" style="background:#0F6E56">JT</div>
+          <div>
+           <p class="autor-nombre">Jorge Torres</p>
+            <p class="autor-vehiculo">Kia Sportage 2020</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonio-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"El air conditioning de mi carro no enfriaba. En Factoría lo cargaron, limpiaron el sistema y al día siguiente mi auto estaba helado. ¡Excelente trabajo!"</blockquote>
+        <div class="testimonio-autor">
+          <div class="autor-avatar" style="background:#185FA5">SC</div>
+          <div>
+            <p class="autor-nombre">Sandra Cueva</p>
+            <p class="autor-vehiculo">Nissan Sentra 2017</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Agenda tu cita</p>
+      <h2 class="section-title">Contáctanos <em>hoy</em></h2>
+      <p class="section-sub">Escríbenos o llama. Te atendemos de lunes a sábado de 8:00 am a 7:00 pm.</p>
+    </div>
+    <div class="contacto-grid reveal">
+      <div class="contacto-info">
+        <h3>Estamos para ayudarte</h3>
+        <p>Nuestro equipo está listo para atenderte. Agenda tu cita con anticipación y garantiza tu horario preferido.</p>
+        <div class="info-item">
+          <span class="info-icon">📍</span>
+          <div>
+            <h5>Dirección</h5>
+            <p>Av 24 de Junio 4ta cuadra _Pampa, Cangallo, Ayacucho. Perú</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">📞</span>
+          <div>
+            <h5>WhatsApp</h5>
+            <p>910 029 387</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">✉️</span>
+          <div>
+            <h5>Email</h5>
+            <p>contacto@factoriaautomotriz.pe</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">🕐</span>
+          <div>
+            <h5>Horario</h5>
+            <p>Lun – Vie: 8:00 am – 7:00 pm<br/>Sábado: 8:00 am – 2:00 pm</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="form-group">
+          <label for="nombre">Nombre completo <span style="color:var(--red)">*</span></label>
+          <input type="text" id="nombre" placeholder="Ej. Juan Pérez Gómez" autocomplete="name"/>
+          <span class="field-error" id="error-nombre"></span>
+        </div>
+        <div class="form-group">
+          <label for="telefono">WhatsApp <span style="color:var(--red)">*</span></label>
+          <input type="tel" id="telefono" placeholder="910029387" maxlength="9" autocomplete="tel"/>
+          <span class="field-error" id="error-telefono"></span>
+        </div>
+        <div class="form-group">
+          <label for="servicio">Servicio que necesitas <span style="color:var(--red)">*</span></label>
+          <select id="servicio">
+            <option value="">Selecciona un servicio</option>
+            <option>Cambio de aceite</option>
+            <option>Neumáticos</option>
+            <option>Sistema de frenos</option>
+            <option>Diagnóstico computarizado</option>
+            <option>Aire acondicionado</option>
+            <option>Pack mantenimiento total</option>
+            <option>Mecánica general</option>
+            <option>Electricidad</option>
+            <option>Otro</option>
+          </select>
+          <span class="field-error" id="error-servicio"></span>
+        </div>
+        <div class="form-group">
+          <label for="vehiculo">Vehículo — marca y modelo <span style="color:var(--red)">*</span></label>
+          <input type="text" id="vehiculo" placeholder="Ej. Toyota Corolla 2020" autocomplete="off"/>
+          <span class="field-error" id="error-vehiculo"></span>
+        </div>
+        <div class="form-group">
+          <label for="mensaje">Mensaje (opcional)</label>
+          <textarea id="mensaje" placeholder="Cuéntanos brevemente qué le pasa a tu vehículo..."></textarea>
+        </div>
+        <button class="form-submit" id="btn-submit" type="button">Enviar solicitud de cita →</button>
+      </div>
+    </div>
+    <!-- MAPA DE GOOGLE MAPS -->
+    <div class="mapa-section reveal" style="margin-top:60px;">
+      <h3 class="mapa-title" style="font-family:var(--font-display);font-size:28px;font-weight:800;text-transform:uppercase;color:var(--white);margin-bottom:20px;">📍 Encuéntranos aquí</h3>
+      <div class="mapa-container" style="border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 10px 40px rgba(0,0,0,0.6);">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.7118865683155!2d-74.20015745734527!3d-13.554282317871996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9112f71fc5df3717%3A0xc1107c0b119c8402!2sFactoria%20Automotriz%20Ronald!5e0!3m2!1ses!2smx!4v1782426235364!5m2!1ses!2smx" width="100%" height="400" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO BRAND HERO SECTION -->
+<section class="video-brand-hero" id="video-hero" aria-label="Sección de presentación de marca">
+  <!-- YouTube Embed as background -->
+  <div class="video-brand-bg">
+    <iframe
+      id="ytBrandVideo"
+      src="https://www.youtube.com/embed/DsonSEllPmU?autoplay=1&mute=1&loop=1&playlist=DsonSEllPmU&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+      title="Tesla Cybertruck"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+      loading="lazy"
+    ></iframe>
+  </div>
+  <!-- Dark overlay gradient -->
+  <div class="video-brand-overlay"></div>
+  <!-- Brand name text -->
+  <div class="video-brand-content">
+    <p class="video-brand-eyebrow">Desde Lima, para el mundo</p>
+    <h2 class="video-brand-name">
+      <span class="brand-word-main">FACTORÍA</span>
+      <span class="brand-word-sub">AUTOMOTRIZ <em>RONALD</em></span>
+    </h2>
+    <p class="video-brand-tagline">Más de 15 años al servicio de tu vehículo</p>
+    <a href="https://wa.me/51910029387?text=Hola%20Factor%C3%ADa%20Ronald%2C%20deseo%20reservar%20una%20cita" target="_blank" class="video-brand-cta">
+      Reservar una cita →
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo">
+        <img src="assets/logo-firme.png" alt="Factoría Ronald Logo" style="width:45px; height:auto; margin-right:12px; border-radius:4px;" />
+        <span style="display:flex; flex-direction:column; line-height:1;">
+          <span style="font-size:16px; font-weight:900; letter-spacing:0.5px;">FACTORÍA</span>
+          <span style="font-size:12px; font-weight:500; color:var(--aws-orange); letter-spacing:1px;">AUTOMOTRIZ RONALD</span>
+        </span>
+      </span>
+      <p>El taller automotriz de Lima con más de 15 años brindando calidad, honestidad y puntualidad. Tu auto en las mejores manos.</p>
+      <div class="footer-social">
+        <a class="social-btn" href="#" title="Facebook">f</a>
+        <a class="social-btn" href="#" title="Instagram">ig</a>
+        <a class="social-btn" href="#" title="TikTok">tk</a>
+        <a class="social-btn" href="#" title="WhatsApp">wa</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Servicios</h5>
+      <ul>
+        <li><a href="#servicios">Mecánica general</a></li>
+        <li><a href="#servicios">Neumáticos</a></li>
+        <li><a href="#servicios">Sistema de frenos</a></li>
+        <li><a href="#servicios">Cambio de aceite</a></li>
+        <li><a href="#servicios">Aire acondicionado</a></li>
+        <li><a href="#servicios">Diagnóstico</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Productos</h5>
+      <ul>
+        <li><a href="#productos">Neumáticos</a></li>
+        <li><a href="#productos">Aceites y lubricantes</a></li>
+        <li><a href="#productos">Baterías</a></li>
+        <li><a href="#productos">Repuestos</a></li>
+        <li><a href="#productos">Accesorios</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Empresa</h5>
+      <ul>
+        <li><a href="#">Quiénes somos</a></li>
+        <li><a href="#testimonios">Clientes</a></li>
+        <li><a href="#ofertas">Promociones</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#">Trabaja con nosotros</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom" style="justify-content: center; text-align: center;">
+    <p>© 2025 Factoría Automotriz Ronald. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
+
+
+
+
+
