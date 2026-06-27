@@ -502,7 +502,7 @@ sections.forEach(sec => {
 });
 
 // ====== EFECTO LUZ ROJA EN TARJETAS AL SCROLLEAR (MÓVIL) ======
-const cards = document.querySelectorAll('.service-card, .producto-card, .oferta-card, .image-wrapper, .mant-visual, .testimonio-card, .detalle-producto');
+const cards = document.querySelectorAll('.service-card, .producto-card, .oferta-card, .image-wrapper, .mant-visual, .testimonio-card, .detalle-producto, .nav-cta, .slide-btn, .add-btn, .detalle-consulta, .oferta-cta, .form-submit, .logo, .logo img');
 
 const cardObserverOptions = {
   root: null,
