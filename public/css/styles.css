@@ -94,7 +94,8 @@ nav::before {
 }
 
 /* El fondo brillante y texto */
-.nav-links.aws-mono a:hover {
+.nav-links.aws-mono a:hover,
+.nav-links.aws-mono a:active {
   color: var(--aws-orange);
   background: rgba(255, 153, 0, 0.1); /* Fondo naranja super suave */
   box-shadow: inset 0 0 0 1px rgba(255, 153, 0, 0.2), 0 0 15px rgba(255, 153, 0, 0.15); /* Borde luminoso y resplandor */
@@ -117,11 +118,16 @@ nav::before {
   opacity: 0;
 }
 
-.nav-links.aws-mono a:hover::after {
+.nav-links.aws-mono a:hover,
+.nav-links.aws-mono a:active {
   width: 40%; /* Línea elegante que no ocupa todo el ancho */
   opacity: 1;
   bottom: -2px;
 }
+
+/* Utils responsivos básicos */
+.mobile-only { display: none !important; }
+.desktop-only { display: block; }
 
 .nav-cta {
   background: var(--aws-orange);
@@ -185,6 +191,9 @@ nav::before {
   .nav-links.aws-mono li:last-child a {
     border-bottom: none;
   }
+  
+  .mobile-only { display: block !important; }
+  .desktop-only { display: none !important; }
   /* Ocultar los botones Admin y Reservar cita — NO el hamburger */
   nav .nav-inner > div:not(.hamburger) {
     display: none;
