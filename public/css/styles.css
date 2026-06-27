@@ -183,27 +183,22 @@ nav::before {
     display: flex;
   }
   
-  /* Animación de entrada de las letras (acomodándose) */
+  /* Animación de entrada de las letras (todas al mismo tiempo) */
   .nav-links.open li {
     opacity: 0;
+    width: 100%;
     animation: slideInMenu 0.4s forwards cubic-bezier(0.25, 0.8, 0.25, 1);
   }
-  .nav-links.open li:nth-child(1) { animation-delay: 0.05s; }
-  .nav-links.open li:nth-child(2) { animation-delay: 0.1s; }
-  .nav-links.open li:nth-child(3) { animation-delay: 0.15s; }
-  .nav-links.open li:nth-child(4) { animation-delay: 0.2s; }
-  .nav-links.open li:nth-child(5) { animation-delay: 0.25s; }
-  .nav-links.open li:nth-child(6) { animation-delay: 0.3s; }
-  .nav-links.open li:nth-child(7) { animation-delay: 0.35s; }
-  .nav-links.open li:nth-child(8) { animation-delay: 0.4s; }
-  .nav-links.open li:nth-child(9) { animation-delay: 0.45s; }
 
   @keyframes slideInMenu {
-    0% { opacity: 0; transform: translateX(20px); }
+    0% { opacity: 0; transform: translateX(30px); }
     100% { opacity: 1; transform: translateX(0); }
   }
 
   .nav-links.aws-mono a {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
     padding: 16px 20px;
     font-size: 16px;
     /* Cajita verde por cada opción */
@@ -568,9 +563,14 @@ footer{background:var(--charcoal);border-top:1px solid rgba(255,255,255,.06);pad
   box-shadow: 0 0 20px rgba(255, 153, 0, 0.3), 0 10px 30px rgba(0,0,0,0.5);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-.service-card:hover, .producto-card:hover, .oferta-card:hover, .image-wrapper:hover,
-.service-card.active-hover, .producto-card.active-hover, .oferta-card.active-hover, .image-wrapper.active-hover {
+.service-card:hover, .producto-card:hover, .oferta-card:hover, .image-wrapper:hover {
   transform: translateY(-8px);
+  border-color: rgba(255,50,30,1);
+  box-shadow: 0 0 25px rgba(255,50,30,0.6), 0 15px 40px rgba(255,50,30,0.4);
+}
+
+/* active-hover no usa translateY para evitar temblor (jitter) de pantalla en móviles al scrollear */
+.service-card.active-hover, .producto-card.active-hover, .oferta-card.active-hover, .image-wrapper.active-hover {
   border-color: rgba(255,50,30,1);
   box-shadow: 0 0 25px rgba(255,50,30,0.6), 0 15px 40px rgba(255,50,30,0.4);
 }
