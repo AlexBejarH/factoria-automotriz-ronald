@@ -46,7 +46,7 @@ async function cargarOfertasWeb() {
       ofertasTrack.appendChild(card);
     });
     
-    // Aplicar clase para animaciÃ³n continua CSS
+    // Aplicar clase para animación continua CSS
     ofertasTrack.classList.add('continuous-marquee');
     
   } catch(err) {
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.querySelectorAll('a[href="#contacto"]:not(.nav-links a)').forEach(function(link) {
     const texto = link.textContent.trim().toLowerCase();
-    if (texto.includes('reservar') || texto.includes('contÃ¡ct') || texto.includes('contact')) {
+    if (texto.includes('reservar') || texto.includes('contáct') || texto.includes('contact')) {
       link.href = crearWhatsAppUrl(link.textContent.trim());
       link.target = '_blank';
       link.rel = 'noopener';
@@ -311,7 +311,7 @@ document.addEventListener('mousemove', function(e) {
   }, 800);
 });
 
-// ====== CATÃLOGO MODAL ======
+// ====== CATÁLOGO MODAL ======
 async function abrirCatalogo(servicio) {
   const slug = servicio
     .toLowerCase()
@@ -329,19 +329,19 @@ async function abrirCatalogo(servicio) {
     return;
   }
 
-  document.getElementById('modalTitle').textContent = 'CatÃ¡logo: ' + servicio;
+  document.getElementById('modalTitle').textContent = 'Catálogo: ' + servicio;
   document.getElementById('catalogoModal').classList.add('active');
   document.body.style.overflow = 'hidden';
   
   const modalBody = document.getElementById('modalBody');
-  modalBody.innerHTML = '<p style="text-align:center;color:var(--silver);">Cargando catÃ¡logo...</p>';
+  modalBody.innerHTML = '<p style="text-align:center;color:var(--silver);">Cargando catálogo...</p>';
   
   try {
     const res = await fetch('/api/catalogo?servicio=' + encodeURIComponent(servicio));
     const items = await res.json();
     
     if(items.length === 0) {
-      modalBody.innerHTML = '<p style="text-align:center;color:var(--silver);">No hay productos registrados para este servicio aÃºn.</p>';
+      modalBody.innerHTML = '<p style="text-align:center;color:var(--silver);">No hay productos registrados para este servicio aún.</p>';
       return;
     }
     
@@ -352,7 +352,7 @@ async function abrirCatalogo(servicio) {
       
       const imgHtml = i.imagen && i.imagen.length > 5 
         ? `<img src="${i.imagen}" alt="${i.producto}">` 
-        : (i.imagen || 'âš™');
+        : (i.imagen || '⚙');
         
       const marcaHtml = i.marca ? ` - ${i.marca}` : '';
       const codHtml = i.codigo ? `COD: ${i.codigo}${marcaHtml}` : (i.marca ? `MARCA: ${i.marca}` : '');
@@ -370,7 +370,7 @@ async function abrirCatalogo(servicio) {
     });
     
   } catch(err) {
-    modalBody.innerHTML = '<p style="text-align:center;color:var(--red);">Error cargando el catÃ¡logo.</p>';
+    modalBody.innerHTML = '<p style="text-align:center;color:var(--red);">Error cargando el catálogo.</p>';
   }
 }
 

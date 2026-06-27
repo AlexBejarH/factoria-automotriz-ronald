@@ -153,7 +153,7 @@ nav::before {
   border-radius: 2px;
 }
 @media (max-width: 900px) {
-  /* Ocultar links y CTA en móvil */
+  /* Ocultar links en móvil */
   .nav-links,
   .nav-links.aws-mono {
     display: none;
@@ -185,15 +185,15 @@ nav::before {
   .nav-links.aws-mono li:last-child a {
     border-bottom: none;
   }
-  /* Ocultar botones del nav en móvil */
-  nav .nav-inner > div {
+  /* Ocultar los botones Admin y Reservar cita — NO el hamburger */
+  nav .nav-inner > div:not(.hamburger) {
     display: none;
   }
   /* Mostrar hamburger */
   .hamburger { display: flex; }
-  /* Nav no tiene border-radius cuando el menú está abierto */
-  nav.menu-open {
-    border-radius: 20px;
+  /* Transición del hamburger a X */
+  .hamburger span {
+    transition: transform 0.3s, opacity 0.3s;
   }
 }
 
