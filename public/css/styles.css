@@ -167,17 +167,15 @@ nav::before {
     top: calc(100% + 12px);
     left: 0;
     right: 0;
-    /* Caja verde de fondo disipado */
-    background: rgba(0, 100, 50, 0.85); /* Verde semi-transparente */
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(0, 230, 118, 0.4); /* Borde verde brillante */
-    border-radius: 16px;
+    /* Sin fondo general, contenedor invisible */
+    background: transparent;
+    border: none;
+    border-radius: 0;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px; /* Mayor separación entre cajitas */
     padding: 16px;
     z-index: 999;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5), inset 0 0 20px rgba(0, 230, 118, 0.2);
+    box-shadow: none;
   }
   
   .nav-links.open,
@@ -206,14 +204,20 @@ nav::before {
   }
 
   .nav-links.aws-mono a {
-    padding: 14px 16px;
+    padding: 16px 20px;
     font-size: 16px;
-    border-radius: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    /* Letras amarillas en el menú verde */
+    /* Cajita verde por cada opción */
+    background: rgba(0, 100, 50, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 230, 118, 0.4);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3), inset 0 0 15px rgba(0, 230, 118, 0.15);
+    /* Letras amarillas */
     color: #FFEA00; 
     transition: all 0.3s;
     font-weight: 600;
+    text-align: center;
   }
   
   /* Efecto luz roja con intensidad al hacer scroll o pasar el mouse */
@@ -234,7 +238,21 @@ nav::before {
   }
 
   .nav-links.aws-mono li:last-child a {
-    border-bottom: none;
+    /* Ya no es necesario quitar el border-bottom porque son cajas independientes */
+  }
+  
+  /* Ajuste para las tarjetas en móvil para que estén centradas y tengan el tamaño de la imagen */
+  .service-card, .producto-card, .oferta-card, .image-wrapper {
+    width: 100% !important;
+    max-width: 360px !important;
+    margin: 0 auto !important;
+  }
+  
+  .services-grid, .productos-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    gap: 24px;
   }
   
   .mobile-only { display: block !important; }
@@ -543,15 +561,15 @@ footer{background:var(--charcoal);border-top:1px solid rgba(255,255,255,.06);pad
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(217,35,29,0.6);
 }
-.service-card, .oferta-card, .producto-card, .testimonio-card, .mant-visual {
+.service-card, .oferta-card, .producto-card, .mant-visual, .image-wrapper {
   background: rgba(24, 28, 33, 0.7);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 153, 0, 0.6);
   box-shadow: 0 0 20px rgba(255, 153, 0, 0.3), 0 10px 30px rgba(0,0,0,0.5);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-.service-card:hover, .producto-card:hover, .oferta-card:hover,
-.service-card.active-hover, .producto-card.active-hover, .oferta-card.active-hover {
+.service-card:hover, .producto-card:hover, .oferta-card:hover, .image-wrapper:hover,
+.service-card.active-hover, .producto-card.active-hover, .oferta-card.active-hover, .image-wrapper.active-hover {
   transform: translateY(-8px);
   border-color: rgba(255,50,30,1);
   box-shadow: 0 0 25px rgba(255,50,30,0.6), 0 15px 40px rgba(255,50,30,0.4);
