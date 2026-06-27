@@ -25,6 +25,33 @@ async function cargarOfertasWeb() {
     
     ofertasTrack.innerHTML = '';
     ofertasNav.innerHTML = '';
+// ====== OFERTAS MINI-CAROUSEL ======
+const whatsappNumero = '51910029387';
+
+function crearWhatsAppUrl(detalle) {
+  const mensaje = `Hola, quiero consultar por ${detalle}.`;
+  return `https://wa.me/${whatsappNumero}?text=${encodeURIComponent(mensaje)}`;
+}
+
+function abrirWhatsAppConsulta(detalle) {
+  window.open(crearWhatsAppUrl(detalle), '_blank', 'noopener');
+}
+
+const ofertasTrack = document.getElementById('ofertasTrack');
+const ofertasNav = document.getElementById('ofertasNav');
+
+async function cargarOfertasWeb() {
+  try {
+    const res = await fetch('/api/ofertas');
+    const ofertas = await res.json();
+    
+    if(ofertas.length === 0) {
+      ofertasTrack.innerHTML = '<p style="color:var(--silver);padding:20px;">No hay ofertas disponibles en este momento.</p>';
+      return;
+    }
+    
+    ofertasTrack.innerHTML = '';
+    ofertasNav.innerHTML = '';
     
     ofertas.forEach(o => {
       const card = document.createElement('div');
@@ -566,10 +593,51 @@ const dynamicObserver = new MutationObserver((mutations) => {
 
 dynamicObserver.observe(document.body, { childList: true, subtree: true });
 
-// ====== HERO SLIDER INTERACTIVO ======
+// ====== HERO SLIDER CONTINUO + BOTONES ======
+let heroScrollInterval;
+let isHeroPaused = false;
+const heroContainer = document.getElementById('slidesWrapper');
+
+function startHeroScroll() {
+  if (!heroContainer) return;
+  heroScrollInterval = setInterval(() => {
+    if (!isHeroPaused) {
+      heroContainer.scrollLeft += 1;
+      // Si llega a la mitad (donde termina el grupo original y empieza el duplicado)
+      if (heroContainer.scrollLeft >= heroContainer.scrollWidth / 2) {
+        heroContainer.scrollLeft = 0;
+      }
+    }
+  }, 20); // Fluidez de la cinta
+}
+
+if (heroContainer) {
+  startHeroScroll();
+  
+  // Pausar si el usuario pone el mouse encima
+  heroContainer.addEventListener('mouseenter', () => isHeroPaused = true);
+  heroContainer.addEventListener('mouseleave', () => isHeroPaused = false);
+  heroContainer.addEventListener('touchstart', () => isHeroPaused = true);
+  heroContainer.addEventListener('touchend', () => isHeroPaused = false);
+}
+
 function scrollHero(direction) {
-  const container = document.getElementById('slidesWrapper');
-  if (!container) return;
+  if (!heroContainer) return;
   const slideWidth = window.innerWidth;
-  container.scrollBy({ left: direction * slideWidth, behavior: 'smooth' });
+  
+  // Detener momentáneamente el auto-scroll
+  isHeroPaused = true;
+  
+  heroContainer.scrollBy({ left: direction * slideWidth, behavior: 'smooth' });
+  
+  // Reanudar después de la animación
+  setTimeout(() => {
+    isHeroPaused = false;
+    // Ajuste de bucle manual si saltamos muy adelante
+    if (heroContainer.scrollLeft >= heroContainer.scrollWidth / 2) {
+      heroContainer.scrollLeft -= heroContainer.scrollWidth / 2;
+    } else if (heroContainer.scrollLeft <= 0) {
+      heroContainer.scrollLeft += heroContainer.scrollWidth / 2;
+    }
+  }, 600);
 }
