@@ -565,3 +565,11 @@ const dynamicObserver = new MutationObserver((mutations) => {
 });
 
 dynamicObserver.observe(document.body, { childList: true, subtree: true });
+
+// ====== HERO SLIDER INTERACTIVO ======
+function scrollHero(direction) {
+  const container = document.getElementById('slidesWrapper');
+  if (!container) return;
+  const slideWidth = window.innerWidth;
+  container.scrollBy({ left: direction * slideWidth, behavior: 'smooth' });
+}
