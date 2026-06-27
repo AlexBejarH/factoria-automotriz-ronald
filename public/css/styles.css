@@ -207,17 +207,17 @@ nav::before {
   .nav-links.aws-mono a {
     display: inline-block;
     width: 100%;
-    max-width: 100px;
+    max-width: 95px;
     box-sizing: border-box;
-    padding: 6px 10px;
-    font-size: 12px;
-    /* Botón rojo oscuro por petición */
-    background: rgba(220, 20, 20, 0.95);
+    padding: 6px 8px;
+    font-size: 11px;
+    /* Botón blanco por petición */
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 50, 30, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 6px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3), inset 0 0 10px rgba(255, 50, 30, 0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     /* Color principal que estamos usando */
     color: var(--aws-orange) !important; 
     transition: all 0.2s;
