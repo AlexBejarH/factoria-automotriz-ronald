@@ -25,33 +25,6 @@ async function cargarOfertasWeb() {
     
     ofertasTrack.innerHTML = '';
     ofertasNav.innerHTML = '';
-// ====== OFERTAS MINI-CAROUSEL ======
-const whatsappNumero = '51910029387';
-
-function crearWhatsAppUrl(detalle) {
-  const mensaje = `Hola, quiero consultar por ${detalle}.`;
-  return `https://wa.me/${whatsappNumero}?text=${encodeURIComponent(mensaje)}`;
-}
-
-function abrirWhatsAppConsulta(detalle) {
-  window.open(crearWhatsAppUrl(detalle), '_blank', 'noopener');
-}
-
-const ofertasTrack = document.getElementById('ofertasTrack');
-const ofertasNav = document.getElementById('ofertasNav');
-
-async function cargarOfertasWeb() {
-  try {
-    const res = await fetch('/api/ofertas');
-    const ofertas = await res.json();
-    
-    if(ofertas.length === 0) {
-      ofertasTrack.innerHTML = '<p style="color:var(--silver);padding:20px;">No hay ofertas disponibles en este momento.</p>';
-      return;
-    }
-    
-    ofertasTrack.innerHTML = '';
-    ofertasNav.innerHTML = '';
     
     ofertas.forEach(o => {
       const card = document.createElement('div');
@@ -603,37 +576,37 @@ function startHeroScroll() {
   heroScrollInterval = setInterval(() => {
     if (!isHeroPaused) {
       heroContainer.scrollLeft += 1;
-      // Si llega a la mitad (donde termina el grupo original y empieza el duplicado)
+      // Bucle infinito: si llegamos a la mitad de todo el ancho (porque están duplicados)
       if (heroContainer.scrollLeft >= heroContainer.scrollWidth / 2) {
         heroContainer.scrollLeft = 0;
       }
     }
-  }, 20); // Fluidez de la cinta
+  }, 20); // Fluidez (velocidad 50px por seg)
 }
 
 if (heroContainer) {
   startHeroScroll();
   
-  // Pausar si el usuario pone el mouse encima
+  // Detener la cinta si el usuario interactúa
   heroContainer.addEventListener('mouseenter', () => isHeroPaused = true);
   heroContainer.addEventListener('mouseleave', () => isHeroPaused = false);
-  heroContainer.addEventListener('touchstart', () => isHeroPaused = true);
-  heroContainer.addEventListener('touchend', () => isHeroPaused = false);
+  heroContainer.addEventListener('touchstart', () => isHeroPaused = true, {passive: true});
+  heroContainer.addEventListener('touchend', () => isHeroPaused = false, {passive: true});
 }
 
 function scrollHero(direction) {
   if (!heroContainer) return;
   const slideWidth = window.innerWidth;
   
-  // Detener momentáneamente el auto-scroll
+  // Pausar auto-scroll mientras se mueve
   isHeroPaused = true;
   
   heroContainer.scrollBy({ left: direction * slideWidth, behavior: 'smooth' });
   
-  // Reanudar después de la animación
+  // Reanudar tras saltar
   setTimeout(() => {
     isHeroPaused = false;
-    // Ajuste de bucle manual si saltamos muy adelante
+    // Bucle para clics continuos
     if (heroContainer.scrollLeft >= heroContainer.scrollWidth / 2) {
       heroContainer.scrollLeft -= heroContainer.scrollWidth / 2;
     } else if (heroContainer.scrollLeft <= 0) {
