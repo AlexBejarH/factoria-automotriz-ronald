@@ -183,21 +183,13 @@ nav::before {
     display: flex;
   }
   
-  /* Animación de entrada de las letras (se acomodan progresivamente pero rápido) */
+  /* Animación de entrada de las letras (inmediatamente) */
   .nav-links.open li {
     opacity: 0;
     width: 100%;
     animation: slideInMenu 0.3s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
   }
-  .nav-links.open li:nth-child(1) { animation-delay: 0.03s; }
-  .nav-links.open li:nth-child(2) { animation-delay: 0.06s; }
-  .nav-links.open li:nth-child(3) { animation-delay: 0.09s; }
-  .nav-links.open li:nth-child(4) { animation-delay: 0.12s; }
-  .nav-links.open li:nth-child(5) { animation-delay: 0.15s; }
-  .nav-links.open li:nth-child(6) { animation-delay: 0.18s; }
-  .nav-links.open li:nth-child(7) { animation-delay: 0.21s; }
-  .nav-links.open li:nth-child(8) { animation-delay: 0.24s; }
-  .nav-links.open li:nth-child(9) { animation-delay: 0.27s; }
+  /* Eliminados los animation-delay para que todo ocurra al instante de abrir */
 
   @keyframes slideInMenu {
     0% { opacity: 0; transform: translateX(20px); }
@@ -205,10 +197,10 @@ nav::before {
   }
 
   .nav-links.aws-mono a {
-    display: block;
-    width: 100%;
+    display: inline-block;
+    width: max-content;
     box-sizing: border-box;
-    padding: 10px 14px;
+    padding: 8px 16px;
     font-size: 15px;
     /* Cajita verde por cada opción */
     background: rgba(0, 100, 50, 0.85);
@@ -222,8 +214,12 @@ nav::before {
     transition: all 0.2s;
     font-weight: 700;
     text-align: center;
-    max-width: 150px;
     margin: 0 auto;
+  }
+  
+  .nav-links.open li {
+    display: flex;
+    justify-content: center;
   }
   
   /* Efecto luz roja con intensidad al hacer scroll o pasar el mouse */

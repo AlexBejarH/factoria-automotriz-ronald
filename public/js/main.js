@@ -506,7 +506,7 @@ const cards = document.querySelectorAll('.service-card, .producto-card, .oferta-
 
 const cardObserverOptions = {
   root: null,
-  rootMargin: '-30% 0px -30% 0px', // Se activa cuando la tarjeta está en el centro de la pantalla
+  rootMargin: '-15% 0px -15% 0px', // Tolerancia mejorada para que se activen más rápido
   threshold: 0
 };
 
