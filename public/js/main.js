@@ -502,7 +502,8 @@ sections.forEach(sec => {
 });
 
 // ====== EFECTO LUZ ROJA EN TARJETAS AL SCROLLEAR (MÓVIL) ======
-const cards = document.querySelectorAll('.service-card, .producto-card, .oferta-card, .image-wrapper, .mant-visual, .testimonio-card, .detalle-producto, .nav-cta, .slide-btn, .add-btn, .detalle-consulta, .oferta-cta, .form-submit, .logo, .logo img, .filosofia-card');
+const cardSelector = '.service-card, .producto-card, .oferta-card, .image-wrapper, .mant-visual, .testimonio-card, .detalle-producto, .nav-cta, .slide-btn, .add-btn, .detalle-consulta, .oferta-cta, .form-submit, .logo, .logo img, .filosofia-card';
+const cards = document.querySelectorAll(cardSelector);
 
 const cardObserverOptions = {
   root: null,
@@ -523,6 +524,24 @@ const cardObserver = new IntersectionObserver((entries) => {
   });
 }, cardObserverOptions);
 
+// Observar los elementos existentes
 cards.forEach(card => {
   if (card) cardObserver.observe(card);
 });
+
+// Observar nuevos elementos dinámicos (como ofertas o productos que carguen luego)
+const dynamicObserver = new MutationObserver((mutations) => {
+  mutations.forEach(mutation => {
+    mutation.addedNodes.forEach(node => {
+      if (node.nodeType === 1) {
+        if (node.matches && node.matches(cardSelector)) {
+          cardObserver.observe(node);
+        }
+        const childCards = node.querySelectorAll ? node.querySelectorAll(cardSelector) : [];
+        childCards.forEach(child => cardObserver.observe(child));
+      }
+    });
+  });
+});
+
+dynamicObserver.observe(document.body, { childList: true, subtree: true });

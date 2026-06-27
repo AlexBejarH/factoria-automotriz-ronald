@@ -183,21 +183,21 @@ nav::before {
     display: flex;
   }
   
-  /* Animación de entrada de las letras (se acomodan secuencialmente) */
+  /* Animación de entrada de las letras (se acomodan inmediatamente) */
   .nav-links.open li {
     opacity: 0;
     width: 100%;
     animation: slideInMenu 0.3s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
   }
-  .nav-links.open li:nth-child(1) { animation-delay: 0.05s; }
-  .nav-links.open li:nth-child(2) { animation-delay: 0.1s; }
-  .nav-links.open li:nth-child(3) { animation-delay: 0.15s; }
-  .nav-links.open li:nth-child(4) { animation-delay: 0.2s; }
-  .nav-links.open li:nth-child(5) { animation-delay: 0.25s; }
-  .nav-links.open li:nth-child(6) { animation-delay: 0.3s; }
-  .nav-links.open li:nth-child(7) { animation-delay: 0.35s; }
-  .nav-links.open li:nth-child(8) { animation-delay: 0.4s; }
-  .nav-links.open li:nth-child(9) { animation-delay: 0.45s; }
+  .nav-links.open li:nth-child(1) { animation-delay: 0.0s; }
+  .nav-links.open li:nth-child(2) { animation-delay: 0.03s; }
+  .nav-links.open li:nth-child(3) { animation-delay: 0.06s; }
+  .nav-links.open li:nth-child(4) { animation-delay: 0.09s; }
+  .nav-links.open li:nth-child(5) { animation-delay: 0.12s; }
+  .nav-links.open li:nth-child(6) { animation-delay: 0.15s; }
+  .nav-links.open li:nth-child(7) { animation-delay: 0.18s; }
+  .nav-links.open li:nth-child(8) { animation-delay: 0.21s; }
+  .nav-links.open li:nth-child(9) { animation-delay: 0.24s; }
 
   @keyframes slideInMenu {
     0% { opacity: 0; transform: translateX(20px); }
@@ -207,21 +207,21 @@ nav::before {
   .nav-links.aws-mono a {
     display: inline-block;
     width: 100%;
-    max-width: 140px;
+    max-width: 100px;
     box-sizing: border-box;
-    padding: 6px 12px;
-    font-size: 14px;
-    /* Cajita verde por cada opción */
-    background: rgba(0, 100, 50, 0.85);
+    padding: 6px 10px;
+    font-size: 12px;
+    /* Botón rojo oscuro por petición */
+    background: rgba(220, 20, 20, 0.95);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(0, 230, 118, 0.4);
+    border: 1px solid rgba(255, 50, 30, 0.6);
     border-radius: 6px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3), inset 0 0 15px rgba(0, 230, 118, 0.15);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3), inset 0 0 10px rgba(255, 50, 30, 0.2);
     /* Color principal que estamos usando */
     color: var(--aws-orange) !important; 
     transition: all 0.2s;
-    font-weight: 700;
+    font-weight: 800;
     text-align: center;
     margin: 0 auto;
   }
