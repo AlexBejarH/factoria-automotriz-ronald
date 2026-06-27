@@ -382,33 +382,31 @@ function cerrarCatalogo(e) {
 
 
 
-// ====== EFECTO HACKER (SCRAMBLE TEXT) EN NAVEGACION ======
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+// ====== EFECTO HACKER (SCRAMBLE TEXT) EN NAVEGACION (MÓVIL AHORA SE ACTIVA AL ABRIR EL MENÚ) ======
+const navLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
 
 document.querySelectorAll(".nav-links.aws-mono a").forEach(link => {
   link.dataset.value = link.innerText;
 
   link.addEventListener("mouseover", event => {
-    let iterations = 0;
+    // Solo aplicar mouseover en desktop
+    if (window.innerWidth <= 900) return;
     
+    let iterations = 0;
     clearInterval(link.interval);
     
     link.interval = setInterval(() => {
       event.target.innerText = event.target.innerText.split("")
         .map((letter, index) => {
-          if(index < iterations) {
-            return event.target.dataset.value[index];
-          }
-          return letters[Math.floor(Math.random() * letters.length)];
-        })
-        .join("");
+          if(index < iterations) return event.target.dataset.value[index];
+          return navLetters[Math.floor(Math.random() * navLetters.length)];
+        }).join("");
       
       if(iterations >= event.target.dataset.value.length){
         clearInterval(link.interval);
-        event.target.innerText = event.target.dataset.value; // Asegurar que termine bien
+        event.target.innerText = event.target.dataset.value; 
       }
-      
-      iterations += 1 / 3; // Velocidad del efecto
+      iterations += 1 / 3;
     }, 30);
   });
 });
@@ -437,6 +435,28 @@ function toggleMenu() {
     spans[0].style.cssText = 'transform:translateY(7px) rotate(45deg);';
     spans[1].style.cssText = 'opacity:0;';
     spans[2].style.cssText = 'transform:translateY(-7px) rotate(-45deg);';
+    
+    // Activar el efecto hacker (scramble de letras) inmediatamente al abrir
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+    document.querySelectorAll(".nav-links.aws-mono a").forEach(link => {
+      if (!link.dataset.value) link.dataset.value = link.innerText;
+      let iterations = 0;
+      clearInterval(link.interval);
+      link.interval = setInterval(() => {
+        link.innerText = link.innerText.split("")
+          .map((letter, index) => {
+            if(index < iterations) return link.dataset.value[index];
+            return letters[Math.floor(Math.random() * letters.length)];
+          }).join("");
+        
+        if(iterations >= link.dataset.value.length){
+          clearInterval(link.interval);
+          link.innerText = link.dataset.value;
+        }
+        iterations += 1 / 3;
+      }, 30);
+    });
+
   } else {
     spans[0].style.cssText = '';
     spans[1].style.cssText = '';
