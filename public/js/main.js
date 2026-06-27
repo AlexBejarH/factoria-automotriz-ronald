@@ -594,11 +594,13 @@ if (heroContainer) {
 
   startHeroScroll();
   
-  // Detener la cinta si el usuario interactúa
-  heroContainer.addEventListener('mouseenter', () => isHeroPaused = true);
-  heroContainer.addEventListener('mouseleave', () => isHeroPaused = false);
-  heroContainer.addEventListener('touchstart', () => isHeroPaused = true, {passive: true});
-  heroContainer.addEventListener('touchend', () => isHeroPaused = false, {passive: true});
+  // Pausa/Reanuda la cinta solo cuando el usuario hace clic (tap)
+  heroContainer.addEventListener('click', (e) => {
+    // Si el clic fue en una flecha, no hacemos toggle aquí, ya lo maneja scrollHero
+    if (e.target.classList.contains('hero-arrow')) return;
+    
+    isHeroPaused = !isHeroPaused; // Alterna entre pausa y movimiento
+  });
 }
 
 function scrollHero(direction) {
